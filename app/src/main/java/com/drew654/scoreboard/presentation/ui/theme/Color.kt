@@ -1,4 +1,4 @@
-package com.drew654.scoreboard.ui.theme
+package com.drew654.scoreboard.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
