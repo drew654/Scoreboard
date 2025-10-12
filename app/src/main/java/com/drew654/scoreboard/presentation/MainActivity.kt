@@ -9,7 +9,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.drew654.scoreboard.presentation.scoreboard.ScoreboardScreen
 import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +21,10 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = Screen.Scoreboard.route
+                    startDestination = "${Screen.Scoreboard.route}/football/college-football"
                 ) {
                     composable(
-                        route = Screen.Scoreboard.route
+                        route = "${Screen.Scoreboard.route}/{sport}/{league}"
                     ) {
                         ScoreboardScreen()
                     }
