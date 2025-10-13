@@ -1,5 +1,6 @@
 package com.drew654.scoreboard.domain.model.scoreboard
 
 data class Scoreboard(
-    val season: Season
+    val season: Season,
+    val events: List<Event>
 )

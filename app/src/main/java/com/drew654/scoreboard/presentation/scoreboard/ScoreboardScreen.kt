@@ -3,11 +3,13 @@ package com.drew654.scoreboard.presentation.scoreboard
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.drew654.scoreboard.presentation.scoreboard.components.EventTile
 
 @Composable
 fun ScoreboardScreen(
@@ -20,8 +22,11 @@ fun ScoreboardScreen(
     ) {
         state.scoreboard?.let {
             Column {
-                Text("Year: ${it.season.year}")
-                Text("Type: ${it.season.type}")
+                LazyColumn {
+                    items(it.events) { event ->
+                        EventTile(event = event)
+                    }
+                }
             }
         }
     }
