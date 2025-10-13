@@ -8,12 +8,14 @@ import com.google.gson.annotations.JsonAdapter
 data class CompetitorDto(
     val id: Int,
     @JsonAdapter(HomeAwayTypeAdapter::class)
-    val homeAway: HomeAway
+    val homeAway: HomeAway,
+    val team: TeamDto
 )
 
 fun CompetitorDto.toCompetitor(): Competitor {
     return Competitor(
         id = id,
-        homeAway = homeAway
+        homeAway = homeAway,
+        team = team.toTeam()
     )
 }
