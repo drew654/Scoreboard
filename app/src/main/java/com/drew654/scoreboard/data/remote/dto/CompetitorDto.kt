@@ -9,13 +9,17 @@ data class CompetitorDto(
     val id: Int,
     @JsonAdapter(HomeAwayTypeAdapter::class)
     val homeAway: HomeAway,
-    val team: TeamDto
+    val team: TeamDto,
+    val score: Int,
+    val records: List<RecordDto>
 )
 
 fun CompetitorDto.toCompetitor(): Competitor {
     return Competitor(
         id = id,
         homeAway = homeAway,
-        team = team.toTeam()
+        team = team.toTeam(),
+        score = score,
+        records = records.map { it.toRecord() }
     )
 }
