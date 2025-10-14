@@ -1,5 +1,6 @@
 package com.drew654.scoreboard.presentation.scoreboard.components
 
+import android.text.format.DateFormat.is24HourFormat
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,14 +14,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
+import com.drew654.scoreboard.presentation.formatHour
 
 @Composable
 fun CompetitionTile(competition: Competition) {
+    val context = LocalContext.current
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
 
@@ -35,7 +39,7 @@ fun CompetitionTile(competition: Competition) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(
-                modifier = Modifier.weight(4f)
+                modifier = Modifier.weight(3f)
             ) {
                 awayTeam?.let {
                     Row(
@@ -81,7 +85,7 @@ fun CompetitionTile(competition: Competition) {
                 }
             }
             Text(
-                text = "12:00", modifier = Modifier
+                text = formatHour(competition.date, is24HourFormat(context)), modifier = Modifier
                     .weight(1f)
                     .padding(start = 12.dp)
             )
