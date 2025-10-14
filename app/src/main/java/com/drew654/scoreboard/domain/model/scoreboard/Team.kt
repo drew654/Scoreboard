@@ -6,5 +6,6 @@ data class Team(
     val name: String,
     val abbreviation: String,
     val displayName: String,
-    val shortDisplayName: String
+    val shortDisplayName: String,
+    val logo: String
 )

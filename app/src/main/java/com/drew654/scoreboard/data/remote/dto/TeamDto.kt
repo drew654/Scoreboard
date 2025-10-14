@@ -8,7 +8,8 @@ data class TeamDto(
     val name: String,
     val abbreviation: String,
     val displayName: String,
-    val shortDisplayName: String
+    val shortDisplayName: String,
+    val logo: String
 )
 
 fun TeamDto.toTeam(): Team {
@@ -18,6 +19,7 @@ fun TeamDto.toTeam(): Team {
         name = name,
         abbreviation = abbreviation,
         displayName = displayName,
-        shortDisplayName = shortDisplayName
+        shortDisplayName = shortDisplayName,
+        logo = logo
     )
 }
