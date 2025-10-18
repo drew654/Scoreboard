@@ -14,7 +14,9 @@ class RecordTypeTypeAdapter : TypeAdapter<RecordType>() {
         return when (value?.lowercase()) {
             "total" -> RecordType.OVERALL
             "homerecord" -> RecordType.HOME
+            "home" -> RecordType.HOME
             "awayrecord" -> RecordType.AWAY
+            "road" -> RecordType.AWAY
             "vsconf" -> RecordType.CONF
             else -> null
         }

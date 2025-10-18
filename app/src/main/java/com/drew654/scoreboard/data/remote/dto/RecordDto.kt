@@ -8,7 +8,7 @@ import com.google.gson.annotations.JsonAdapter
 
 data class RecordDto(
     val name: String,
-    val abbreviation: String,
+    val abbreviation: String?,
     @JsonAdapter(RecordTypeTypeAdapter::class)
     val type: RecordType,
     val summary: String
