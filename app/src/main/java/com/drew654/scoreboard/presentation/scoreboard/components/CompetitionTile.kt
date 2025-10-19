@@ -1,14 +1,15 @@
 package com.drew654.scoreboard.presentation.scoreboard.components
 
 import android.text.format.DateFormat.is24HourFormat
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,15 +29,18 @@ fun CompetitionTile(competition: Competition) {
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
 
-    Box(
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, MaterialTheme.colorScheme.onBackground, MaterialTheme.shapes.medium)
-            .padding(4.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
         ) {
             Column(
                 modifier = Modifier.weight(3f)
@@ -50,15 +54,18 @@ fun CompetitionTile(competition: Competition) {
                             contentDescription = "${awayTeam.team.logo} logo",
                             modifier = Modifier
                                 .size(24.dp)
-                                .padding(end = 4.dp)
                         )
+                        Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = awayTeam.team.shortDisplayName
+                            text = awayTeam.team.shortDisplayName,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface,
                         )
                         Spacer(modifier = Modifier.weight(1f))
                         Text(
                             text = awayTeam.records.find { it.type == RecordType.OVERALL }?.summary
-                                ?: ""
+                                ?: "",
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }
@@ -71,21 +78,26 @@ fun CompetitionTile(competition: Competition) {
                             contentDescription = "${homeTeam.team.logo} logo",
                             modifier = Modifier
                                 .size(24.dp)
-                                .padding(end = 4.dp)
                         )
+                        Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = homeTeam.team.shortDisplayName
+                            text = homeTeam.team.shortDisplayName,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.weight(1f))
                         Text(
                             text = homeTeam.records.find { it.type == RecordType.OVERALL }?.summary
-                                ?: ""
+                                ?: "",
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }
             }
             Text(
-                text = formatHour(competition.date, is24HourFormat(context)), modifier = Modifier
+                text = formatHour(competition.date, is24HourFormat(context)),
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier
                     .weight(1f)
                     .padding(start = 12.dp)
             )
