@@ -4,13 +4,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.presentation.scoreboard.components.CompetitionTile
+import java.time.ZoneId
 
 @Composable
 fun ScoreboardScreen(
@@ -29,11 +30,28 @@ fun ScoreboardScreen(
         state.scoreboard?.let {
             Column {
                 LazyColumn {
-                    items(allCompetitions) { competition ->
+                    itemsIndexed(allCompetitions) { index, competition ->
+                        if (shouldShowDateHeader(allCompetitions, index)) {
+                            DateHeader(competition.date)
+                        }
                         CompetitionTile(competition = competition)
                     }
                 }
             }
         }
     }
+}
+
+private fun shouldShowDateHeader(competitions: List<Competition>, index: Int): Boolean {
+    if (index == 0) {
+        return true
+    }
+
+    val currentInstant = competitions[index].date
+    val previousInstant = competitions[index - 1].date
+    val zoneId = ZoneId.systemDefault()
+    val currentDate = currentInstant.atZone(zoneId).toLocalDate()
+    val previousDate = previousInstant.atZone(zoneId).toLocalDate()
+
+    return currentDate != previousDate
 }
