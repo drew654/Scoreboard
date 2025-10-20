@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
+import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
 import com.drew654.scoreboard.presentation.formatHour
@@ -40,59 +41,15 @@ fun CompetitionTile(competition: Competition) {
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Column(
                 modifier = Modifier.weight(3f)
             ) {
-                awayTeam?.let {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        AsyncImage(
-                            model = awayTeam.team.logo,
-                            contentDescription = "${awayTeam.team.logo} logo",
-                            modifier = Modifier
-                                .size(24.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = awayTeam.team.shortDisplayName,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurface,
-                        )
-                        Spacer(modifier = Modifier.weight(1f))
-                        Text(
-                            text = awayTeam.records.find { it.type == RecordType.OVERALL }?.summary
-                                ?: "",
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-                }
-                homeTeam?.let {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        AsyncImage(
-                            model = homeTeam.team.logo,
-                            contentDescription = "${homeTeam.team.logo} logo",
-                            modifier = Modifier
-                                .size(24.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = homeTeam.team.shortDisplayName,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Spacer(modifier = Modifier.weight(1f))
-                        Text(
-                            text = homeTeam.records.find { it.type == RecordType.OVERALL }?.summary
-                                ?: "",
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-                }
+                awayTeam?.let { TeamRow(team = it) }
+                homeTeam?.let { TeamRow(team = it) }
             }
             Text(
                 text = formatHour(competition.date, is24HourFormat(context)),
@@ -102,5 +59,31 @@ fun CompetitionTile(competition: Competition) {
                     .padding(start = 12.dp)
             )
         }
+    }
+}
+
+@Composable
+private fun TeamRow(team: Competitor) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        AsyncImage(
+            model = team.team.logo,
+            contentDescription = "${team.team.logo} logo",
+            modifier = Modifier
+                .size(24.dp)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = team.team.shortDisplayName,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface,
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text = team.records.find { it.type == RecordType.OVERALL }?.summary
+                ?: "",
+            color = MaterialTheme.colorScheme.onSurface
+        )
     }
 }
