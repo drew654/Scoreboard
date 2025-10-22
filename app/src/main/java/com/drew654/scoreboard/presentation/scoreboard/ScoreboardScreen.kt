@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -30,6 +31,14 @@ fun ScoreboardScreen(
         state.scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
             ?: emptyList()
     val selectedEntryIndex = remember { mutableIntStateOf(0) }
+
+    LaunchedEffect(entries) {
+        val currentWeekEntry = entries.find {
+            val now = System.currentTimeMillis()
+            it.startDate.toEpochMilli() <= now && it.endDate.toEpochMilli() >= now
+        }
+        selectedEntryIndex.intValue = currentWeekEntry?.value?.minus(1) ?: 0
+    }
 
     Box(
         modifier = Modifier.fillMaxSize(),
