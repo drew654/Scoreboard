@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.presentation.scoreboard.components.CompetitionTile
+import com.drew654.scoreboard.presentation.scoreboard.components.DatePicker
 import java.time.ZoneId
 
 @Composable
@@ -23,12 +24,17 @@ fun ScoreboardScreen(
             competition
         }
     } ?: emptyList()
+    val entries =
+        state.scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
+            ?: emptyList()
+
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         state.scoreboard?.let {
             Column {
+                DatePicker(entries = entries)
                 LazyColumn {
                     itemsIndexed(allCompetitions) { index, competition ->
                         if (shouldShowDateHeader(allCompetitions, index)) {
