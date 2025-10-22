@@ -6,12 +6,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.presentation.scoreboard.components.CompetitionTile
-import com.drew654.scoreboard.presentation.scoreboard.components.DatePicker
+import com.drew654.scoreboard.presentation.scoreboard.components.WeekPicker
 import java.time.ZoneId
 
 @Composable
@@ -27,6 +29,7 @@ fun ScoreboardScreen(
     val entries =
         state.scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
             ?: emptyList()
+    val selectedEntryIndex = remember { mutableIntStateOf(0) }
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -34,7 +37,13 @@ fun ScoreboardScreen(
     ) {
         state.scoreboard?.let {
             Column {
-                DatePicker(entries = entries)
+                WeekPicker(
+                    entries = entries,
+                    selectedEntryIndex = selectedEntryIndex.intValue,
+                    onEntrySelected = {
+                        selectedEntryIndex.intValue = it
+                    }
+                )
                 LazyColumn {
                     itemsIndexed(allCompetitions) { index, competition ->
                         if (shouldShowDateHeader(allCompetitions, index)) {
