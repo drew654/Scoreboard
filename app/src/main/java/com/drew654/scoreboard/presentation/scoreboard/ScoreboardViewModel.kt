@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.drew654.scoreboard.common.Constants
 import com.drew654.scoreboard.common.Resource
+import com.drew654.scoreboard.domain.model.scoreboard.ListCalendarEntry
 import com.drew654.scoreboard.domain.use_case.get_scoreboard.GetScoreboardUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -46,5 +49,12 @@ class ScoreboardViewModel @Inject constructor(
             }
 
         }.launchIn(viewModelScope)
+    }
+
+    private val _selectedCalendarEntry = MutableStateFlow<ListCalendarEntry?>(null)
+    val selectedCalendarEntry = _selectedCalendarEntry.asStateFlow()
+
+    fun setSelectedCalendarEntry(entry: ListCalendarEntry) {
+        _selectedCalendarEntry.value = entry
     }
 }

@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,15 +31,21 @@ fun ScoreboardScreen(
     val entries =
         state.scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
             ?: emptyList()
-    val selectedEntryIndex = remember { mutableIntStateOf(0) }
+    val selectedEntry = viewModel.selectedCalendarEntry.collectAsState()
     var isWeekPickerVisible = remember { mutableStateOf(false) }
 
     LaunchedEffect(entries) {
-        val currentWeekEntry = entries.find {
-            val now = System.currentTimeMillis()
-            it.startDate.toEpochMilli() <= now && it.endDate.toEpochMilli() >= now
+        if (entries.isNotEmpty()) {
+            val currentWeekEntry = entries.find {
+                val now = System.currentTimeMillis()
+                it.startDate.toEpochMilli() <= now && it.endDate.toEpochMilli() >= now
+            }
+            if (currentWeekEntry == null) {
+                viewModel.setSelectedCalendarEntry(entries.first())
+            } else {
+                viewModel.setSelectedCalendarEntry(currentWeekEntry)
+            }
         }
-        selectedEntryIndex.intValue = currentWeekEntry?.value?.minus(1) ?: 0
     }
 
     Box(
@@ -50,9 +56,9 @@ fun ScoreboardScreen(
             Column {
                 WeekPicker(
                     entries = entries,
-                    selectedEntryIndex = selectedEntryIndex.intValue,
+                    selectedEntryIndex = entries.indexOf(selectedEntry.value),
                     onEntrySelected = {
-                        selectedEntryIndex.intValue = it
+                        viewModel.setSelectedCalendarEntry(entries[it])
                     },
                     isVisible = isWeekPickerVisible.value,
                     onInitialScrollComplete = {
