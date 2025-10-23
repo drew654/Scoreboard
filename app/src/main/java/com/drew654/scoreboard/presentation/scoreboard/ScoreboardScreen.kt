@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,6 +32,7 @@ fun ScoreboardScreen(
         state.scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
             ?: emptyList()
     val selectedEntryIndex = remember { mutableIntStateOf(0) }
+    var isWeekPickerVisible = remember { mutableStateOf(false) }
 
     LaunchedEffect(entries) {
         val currentWeekEntry = entries.find {
@@ -51,14 +53,20 @@ fun ScoreboardScreen(
                     selectedEntryIndex = selectedEntryIndex.intValue,
                     onEntrySelected = {
                         selectedEntryIndex.intValue = it
+                    },
+                    isVisible = isWeekPickerVisible.value,
+                    onInitialScrollComplete = {
+                        isWeekPickerVisible.value = true
                     }
                 )
-                LazyColumn {
-                    itemsIndexed(allCompetitions) { index, competition ->
-                        if (shouldShowDateHeader(allCompetitions, index)) {
-                            DateHeader(competition.date)
+                if (isWeekPickerVisible.value) {
+                    LazyColumn {
+                        itemsIndexed(allCompetitions) { index, competition ->
+                            if (shouldShowDateHeader(allCompetitions, index)) {
+                                DateHeader(competition.date)
+                            }
+                            CompetitionTile(competition = competition)
                         }
-                        CompetitionTile(competition = competition)
                     }
                 }
             }
