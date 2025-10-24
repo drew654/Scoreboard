@@ -12,9 +12,9 @@ import com.drew654.scoreboard.domain.use_case.get_scoreboard.GetScoreboardUseCas
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @HiltViewModel
 class ScoreboardViewModel @Inject constructor(
@@ -36,19 +36,41 @@ class ScoreboardViewModel @Inject constructor(
         getScoreboardUseCase(sport, league).onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _state.value = ScoreboardState(scoreboard = result.data)
+                    val scoreboard = result.data
+                    val competitions =
+                        scoreboard?.events?.flatMap { it.competitions } ?: emptyList()
+                    val calendarEntries =
+                        scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
+                            ?: emptyList()
+
+                    _state.value = ScoreboardState(
+                        scoreboard = result.data,
+                        competitions = competitions,
+                        calendarEntries = calendarEntries
+                    )
+                    setInitialCalendarEntry(calendarEntries)
                 }
+
                 is Resource.Error -> {
                     _state.value = ScoreboardState(
                         error = result.message ?: "An unexpected error occurred"
                     )
                 }
+
                 is Resource.Loading -> {
                     _state.value = ScoreboardState(isLoading = true)
                 }
             }
 
         }.launchIn(viewModelScope)
+    }
+
+    private fun setInitialCalendarEntry(calendarEntries: List<ListCalendarEntry>) {
+        val now = System.currentTimeMillis()
+        val currentWeekEntry =
+            calendarEntries.find { now in it.startDate.toEpochMilli()..it.endDate.toEpochMilli() }
+
+        setSelectedCalendarEntry(currentWeekEntry ?: calendarEntries.first())
     }
 
     private val _selectedCalendarEntry = MutableStateFlow<ListCalendarEntry?>(null)

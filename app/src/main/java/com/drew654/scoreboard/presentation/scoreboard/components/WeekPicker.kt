@@ -46,7 +46,7 @@ fun WeekPicker(
                     val itemCenter = itemInfo.offset + itemInfo.size / 2
                     lazyListState.animateScrollBy((itemCenter - center).toFloat())
                 } else {
-                    lazyListState.animateScrollToItem(selectedEntryIndex)
+                    lazyListState.scrollToItem(selectedEntryIndex)
                     val itemInfo = lazyListState.layoutInfo.visibleItemsInfo.firstOrNull {it.index == selectedEntryIndex}
                     val center = lazyListState.layoutInfo.viewportEndOffset / 2
                     val itemCenter = itemInfo?.offset?.plus(itemInfo.size / 2)

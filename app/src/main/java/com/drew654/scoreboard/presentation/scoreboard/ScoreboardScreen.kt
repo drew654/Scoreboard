@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,30 +22,10 @@ fun ScoreboardScreen(
     viewModel: ScoreboardViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-    val allCompetitions: List<Competition> = state.scoreboard?.events?.flatMap { event ->
-        event.competitions.map { competition ->
-            competition
-        }
-    } ?: emptyList()
-    val entries =
-        state.scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
-            ?: emptyList()
+    val competitions = viewModel.state.value.competitions
+    val calendarEntries = viewModel.state.value.calendarEntries
     val selectedEntry = viewModel.selectedCalendarEntry.collectAsState()
     var isWeekPickerVisible = remember { mutableStateOf(false) }
-
-    LaunchedEffect(entries) {
-        if (entries.isNotEmpty()) {
-            val currentWeekEntry = entries.find {
-                val now = System.currentTimeMillis()
-                it.startDate.toEpochMilli() <= now && it.endDate.toEpochMilli() >= now
-            }
-            if (currentWeekEntry == null) {
-                viewModel.setSelectedCalendarEntry(entries.first())
-            } else {
-                viewModel.setSelectedCalendarEntry(currentWeekEntry)
-            }
-        }
-    }
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -55,10 +34,10 @@ fun ScoreboardScreen(
         state.scoreboard?.let {
             Column {
                 WeekPicker(
-                    entries = entries,
-                    selectedEntryIndex = entries.indexOf(selectedEntry.value),
+                    entries = calendarEntries,
+                    selectedEntryIndex = calendarEntries.indexOf(selectedEntry.value),
                     onEntrySelected = {
-                        viewModel.setSelectedCalendarEntry(entries[it])
+                        viewModel.setSelectedCalendarEntry(calendarEntries[it])
                     },
                     isVisible = isWeekPickerVisible.value,
                     onInitialScrollComplete = {
@@ -67,8 +46,8 @@ fun ScoreboardScreen(
                 )
                 if (isWeekPickerVisible.value) {
                     LazyColumn {
-                        itemsIndexed(allCompetitions) { index, competition ->
-                            if (shouldShowDateHeader(allCompetitions, index)) {
+                        itemsIndexed(competitions) { index, competition ->
+                            if (shouldShowDateHeader(competitions, index)) {
                                 DateHeader(competition.date)
                             }
                             CompetitionTile(competition = competition)
