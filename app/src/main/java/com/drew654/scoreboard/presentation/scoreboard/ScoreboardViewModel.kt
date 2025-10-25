@@ -49,21 +49,26 @@ class ScoreboardViewModel @Inject constructor(
                             ?: emptyList()
 
                     _state.value = ScoreboardState(
-                        scoreboard = result.data,
+                        isLoading = false,
+                        scoreboard = scoreboard,
                         competitions = competitions,
-                        calendarEntries = calendarEntries
+                        calendarEntries = if (week == null) calendarEntries else state.value.calendarEntries
                     )
-                    setInitialCalendarEntry(calendarEntries, week)
+
+                    if (week == null) {
+                        setInitialCalendarEntry(calendarEntries, week)
+                    }
                 }
 
                 is Resource.Error -> {
                     _state.value = ScoreboardState(
+                        isLoading = false,
                         error = result.message ?: "An unexpected error occurred"
                     )
                 }
 
                 is Resource.Loading -> {
-                    _state.value = ScoreboardState(isLoading = true)
+                    _state.value = state.value.copy(isLoading = true)
                 }
             }
 
