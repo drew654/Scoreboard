@@ -86,6 +86,15 @@ class ScoreboardViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
+    fun refresh() {
+        val week = selectedCalendarEntry.value?.value
+        currentLeague?.let { league ->
+            currentSport?.let { sport ->
+                getScoreboard(sport, league, week)
+            }
+        }
+    }
+
     private fun setInitialCalendarEntry(calendarEntries: List<ListCalendarEntry>, week: Int?) {
         val now = System.currentTimeMillis()
         val currentWeekEntry =
