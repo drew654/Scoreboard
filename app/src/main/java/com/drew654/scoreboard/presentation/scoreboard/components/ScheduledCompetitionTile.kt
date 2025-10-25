@@ -25,7 +25,7 @@ import com.drew654.scoreboard.domain.model.scoreboard.RecordType
 import com.drew654.scoreboard.presentation.formatHour
 
 @Composable
-fun CompetitionTile(competition: Competition) {
+fun ScheduledCompetitionTile(competition: Competition) {
     val context = LocalContext.current
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
@@ -55,7 +55,7 @@ fun CompetitionTile(competition: Competition) {
                 text = formatHour(competition.date, is24HourFormat(context)),
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(1.5f)
                     .padding(start = 12.dp)
             )
         }

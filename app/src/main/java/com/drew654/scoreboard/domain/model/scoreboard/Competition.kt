@@ -5,5 +5,6 @@ import java.time.Instant
 data class Competition(
     val id: Int,
     val competitors: List<Competitor>,
-    val date: Instant
+    val date: Instant,
+    val status: Status
 )

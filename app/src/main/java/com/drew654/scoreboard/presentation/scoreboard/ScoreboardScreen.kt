@@ -13,7 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
-import com.drew654.scoreboard.presentation.scoreboard.components.CompetitionTile
+import com.drew654.scoreboard.presentation.scoreboard.components.InProgressCompetitionTile
+import com.drew654.scoreboard.presentation.scoreboard.components.ScheduledCompetitionTile
 import com.drew654.scoreboard.presentation.scoreboard.components.WeekPicker
 import java.time.ZoneId
 
@@ -50,7 +51,17 @@ fun ScoreboardScreen(
                             if (shouldShowDateHeader(competitions, index)) {
                                 DateHeader(competition.date)
                             }
-                            CompetitionTile(competition = competition)
+                            when (competition.status.type.name) {
+                                "STATUS_SCHEDULED" -> {
+                                    ScheduledCompetitionTile(competition = competition)
+                                }
+                                "STATUS_IN_PROGRESS" -> {
+                                    InProgressCompetitionTile(competition = competition)
+                                }
+                                "STATUS_FINAL" -> {
+                                    InProgressCompetitionTile(competition = competition)
+                                }
+                            }
                         }
                     }
                 }

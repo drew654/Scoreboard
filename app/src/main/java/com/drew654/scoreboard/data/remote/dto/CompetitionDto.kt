@@ -7,7 +7,8 @@ import java.time.format.DateTimeFormatter
 data class CompetitionDto(
     val id: Int,
     val competitors: List<CompetitorDto>,
-    val date: String
+    val date: String,
+    val status: StatusDto
 )
 
 fun CompetitionDto.toCompetition(): Competition {
@@ -15,6 +16,7 @@ fun CompetitionDto.toCompetition(): Competition {
     return Competition(
         id = id,
         competitors = competitors.map { it.toCompetitor() },
-        date = Instant.from(formatter.parse(date))
+        date = Instant.from(formatter.parse(date)),
+        status = status.toStatus()
     )
 }
