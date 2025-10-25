@@ -83,6 +83,9 @@ fun ScoreboardScreen(
                                 "STATUS_IN_PROGRESS" -> {
                                     InProgressCompetitionTile(competition = competition)
                                 }
+                                "STATUS_HALFTIME" -> {
+                                    InProgressCompetitionTile(competition = competition)
+                                }
                                 "STATUS_FINAL" -> {
                                     InProgressCompetitionTile(competition = competition)
                                 }

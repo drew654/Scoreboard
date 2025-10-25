@@ -40,6 +40,7 @@ class ScoreboardViewModel @Inject constructor(
     private val statusSortOrder = mapOf(
         "STATUS_IN_PROGRESS" to 1,
         "STATUS_FINAL" to 2,
+        "STATUS_HALFTIME" to 2,
         "STATUS_SCHEDULED" to 3
     )
 
