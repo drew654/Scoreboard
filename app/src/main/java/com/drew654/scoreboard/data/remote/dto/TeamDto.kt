@@ -9,7 +9,7 @@ data class TeamDto(
     val abbreviation: String,
     val displayName: String,
     val shortDisplayName: String,
-    val logo: String
+    val logo: String?
 )
 
 fun TeamDto.toTeam(): Team {

@@ -11,7 +11,7 @@ data class CompetitorDto(
     val homeAway: HomeAway,
     val team: TeamDto,
     val score: Int,
-    val records: List<RecordDto>
+    val records: List<RecordDto>?
 )
 
 fun CompetitorDto.toCompetitor(): Competitor {
@@ -20,6 +20,6 @@ fun CompetitorDto.toCompetitor(): Competitor {
         homeAway = homeAway,
         team = team.toTeam(),
         score = score,
-        records = records.map { it.toRecord() }
+        records = records.orEmpty().map { it.toRecord() }
     )
 }

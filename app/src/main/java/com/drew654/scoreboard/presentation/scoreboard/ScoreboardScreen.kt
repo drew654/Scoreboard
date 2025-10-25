@@ -29,7 +29,7 @@ fun ScoreboardScreen(
 
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.TopCenter
     ) {
         state.scoreboard?.let {
             Column {
