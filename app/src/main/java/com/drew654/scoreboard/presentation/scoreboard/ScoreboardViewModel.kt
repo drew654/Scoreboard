@@ -37,6 +37,12 @@ class ScoreboardViewModel @Inject constructor(
         }
     }
 
+    private val statusSortOrder = mapOf(
+        "STATUS_IN_PROGRESS" to 1,
+        "STATUS_FINAL" to 2,
+        "STATUS_SCHEDULED" to 3
+    )
+
     private fun getScoreboard(sport: String, league: String, week: Int?) {
         getScoreboardUseCase(sport, league, week).onEach { result ->
             when (result) {
@@ -44,6 +50,11 @@ class ScoreboardViewModel @Inject constructor(
                     val scoreboard = result.data
                     val competitions =
                         scoreboard?.events?.flatMap { it.competitions } ?: emptyList()
+                    val sortedCompetitions = competitions.sortedWith(
+                        compareBy { competition ->
+                            statusSortOrder[competition.status.type.name] ?: Int.MAX_VALUE
+                        }
+                    )
                     val calendarEntries =
                         scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
                             ?: emptyList()
@@ -51,7 +62,7 @@ class ScoreboardViewModel @Inject constructor(
                     _state.value = ScoreboardState(
                         isLoading = false,
                         scoreboard = scoreboard,
-                        competitions = competitions,
+                        competitions = sortedCompetitions,
                         calendarEntries = if (week == null) calendarEntries else state.value.calendarEntries
                     )
 
