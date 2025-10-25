@@ -24,16 +24,21 @@ class ScoreboardViewModel @Inject constructor(
     private val _state = mutableStateOf(ScoreboardState())
     val state: State<ScoreboardState> = _state
 
+    private var currentLeague: String? = null
+    private var currentSport: String? = null
+
     init {
         savedStateHandle.get<String>(Constants.PARAM_LEAGUE)?.let { league ->
+            currentLeague = league
             savedStateHandle.get<String>(Constants.PARAM_SPORT)?.let { sport ->
-                getScoreboard(sport, league)
+                currentSport = sport
+                getScoreboard(sport, league, null)
             }
         }
     }
 
-    private fun getScoreboard(sport: String, league: String) {
-        getScoreboardUseCase(sport, league).onEach { result ->
+    private fun getScoreboard(sport: String, league: String, week: Int?) {
+        getScoreboardUseCase(sport, league, week).onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     val scoreboard = result.data
@@ -48,7 +53,7 @@ class ScoreboardViewModel @Inject constructor(
                         competitions = competitions,
                         calendarEntries = calendarEntries
                     )
-                    setInitialCalendarEntry(calendarEntries)
+                    setInitialCalendarEntry(calendarEntries, week)
                 }
 
                 is Resource.Error -> {
@@ -65,10 +70,11 @@ class ScoreboardViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    private fun setInitialCalendarEntry(calendarEntries: List<ListCalendarEntry>) {
+    private fun setInitialCalendarEntry(calendarEntries: List<ListCalendarEntry>, week: Int?) {
         val now = System.currentTimeMillis()
         val currentWeekEntry =
-            calendarEntries.find { now in it.startDate.toEpochMilli()..it.endDate.toEpochMilli() }
+            if (week == null) calendarEntries.find { now in it.startDate.toEpochMilli()..it.endDate.toEpochMilli() }
+            else calendarEntries.find { it.value == week }
 
         setSelectedCalendarEntry(currentWeekEntry ?: calendarEntries.first())
     }
@@ -77,6 +83,14 @@ class ScoreboardViewModel @Inject constructor(
     val selectedCalendarEntry = _selectedCalendarEntry.asStateFlow()
 
     fun setSelectedCalendarEntry(entry: ListCalendarEntry) {
+        if (_selectedCalendarEntry.value == entry) return
+
         _selectedCalendarEntry.value = entry
+
+        currentLeague?.let { league ->
+            currentSport?.let { sport ->
+                getScoreboard(sport, league, entry.value)
+            }
+        }
     }
 }
