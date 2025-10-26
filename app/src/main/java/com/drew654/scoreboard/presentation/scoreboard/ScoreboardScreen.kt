@@ -18,7 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
+import com.drew654.scoreboard.presentation.Screen
 import com.drew654.scoreboard.presentation.scoreboard.components.InProgressCompetitionTile
 import com.drew654.scoreboard.presentation.scoreboard.components.ScheduledCompetitionTile
 import com.drew654.scoreboard.presentation.scoreboard.components.WeekPicker
@@ -27,7 +29,8 @@ import java.time.ZoneId
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScoreboardScreen(
-    viewModel: ScoreboardViewModel = hiltViewModel()
+    viewModel: ScoreboardViewModel = hiltViewModel(),
+    navController: NavController
 ) {
     val state = viewModel.state.value
     val competitions = viewModel.state.value.competitions
@@ -80,14 +83,22 @@ fun ScoreboardScreen(
                                 "STATUS_SCHEDULED" -> {
                                     ScheduledCompetitionTile(competition = competition)
                                 }
+
                                 "STATUS_IN_PROGRESS" -> {
-                                    InProgressCompetitionTile(competition = competition)
+                                    InProgressCompetitionTile(
+                                        competition = competition,
+                                        onClick = {
+                                            navController.navigate(Screen.Competition.route)
+                                        }
+                                    )
                                 }
-                                "STATUS_HALFTIME" -> {
-                                    InProgressCompetitionTile(competition = competition)
-                                }
+
+                                "STATUS_END_PERIOD",
+                                "STATUS_HALFTIME",
                                 "STATUS_FINAL" -> {
-                                    InProgressCompetitionTile(competition = competition)
+                                    InProgressCompetitionTile(
+                                        competition = competition
+                                    )
                                 }
                             }
                         }

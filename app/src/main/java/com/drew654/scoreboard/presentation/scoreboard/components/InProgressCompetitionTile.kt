@@ -1,5 +1,6 @@
 package com.drew654.scoreboard.presentation.scoreboard.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
@@ -21,18 +23,28 @@ import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 
 @Composable
-fun InProgressCompetitionTile(competition: Competition) {
+fun InProgressCompetitionTile(competition: Competition, onClick: (() -> Unit)? = null) {
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
 
     Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .then(
+                if (onClick == null) {
+                    Modifier
+                } else {
+                    Modifier
+                        .clip(CardDefaults.shape)
+                        .clickable(onClick = onClick)
+                }
+            ),
+        shape = CardDefaults.shape,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

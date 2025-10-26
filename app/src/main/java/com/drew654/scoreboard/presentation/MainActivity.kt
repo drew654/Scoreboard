@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.drew654.scoreboard.presentation.competition.CompetitionScreen
 import com.drew654.scoreboard.presentation.scoreboard.ScoreboardScreen
 import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,12 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = "${Screen.Scoreboard.route}/{sport}/{league}"
                         ) {
-                            ScoreboardScreen()
+                            ScoreboardScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.Competition.route
+                        ) {
+                            CompetitionScreen()
                         }
                     }
                 }
