@@ -83,7 +83,8 @@ private fun TeamRow(team: Competitor) {
         Text(
             text = team.records.find { it.type == RecordType.OVERALL }?.summary
                 ?: "",
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 }

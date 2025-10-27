@@ -92,7 +92,8 @@ private fun TeamRow(team: Competitor) {
         Spacer(modifier = Modifier.weight(1f))
         Text(
             text = team.score.toString(),
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 }
