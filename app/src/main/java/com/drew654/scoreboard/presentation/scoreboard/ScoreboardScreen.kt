@@ -25,6 +25,7 @@ import com.drew654.scoreboard.presentation.scoreboard.components.InProgressCompe
 import com.drew654.scoreboard.presentation.scoreboard.components.ScheduledCompetitionTile
 import com.drew654.scoreboard.presentation.scoreboard.components.WeekPicker
 import java.time.ZoneId
+import java.time.temporal.ChronoUnit
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +37,7 @@ fun ScoreboardScreen(
     val competitions = viewModel.state.value.competitions
     val calendarEntries = viewModel.state.value.calendarEntries
     val selectedEntry = viewModel.selectedCalendarEntry.collectAsState()
-    var isWeekPickerVisible = remember { mutableStateOf(false) }
+    val isWeekPickerVisible = remember { mutableStateOf(false) }
     val pullToRefreshState = rememberPullToRefreshState()
 
 
@@ -119,11 +120,19 @@ private fun shouldShowDateHeader(competitions: List<Competition>, index: Int): B
         return true
     }
 
-    val currentInstant = competitions[index].date
-    val previousInstant = competitions[index - 1].date
+    val currentCompetition = competitions[index]
+    val previousCompetition = competitions[index - 1]
     val zoneId = ZoneId.systemDefault()
-    val currentDate = currentInstant.atZone(zoneId).toLocalDate()
-    val previousDate = previousInstant.atZone(zoneId).toLocalDate()
+    val currentDate = if (currentCompetition.status.type.shortDetail == "TBD") {
+        currentCompetition.date.truncatedTo(ChronoUnit.DAYS).atZone(ZoneId.of("UTC")).toLocalDate()
+    } else {
+        currentCompetition.date.atZone(zoneId).toLocalDate()
+    }
+    val previousDate = if (previousCompetition.status.type.shortDetail == "TBD") {
+        previousCompetition.date.truncatedTo(ChronoUnit.DAYS).atZone(ZoneId.of("UTC")).toLocalDate()
+    } else {
+        previousCompetition.date.atZone(zoneId).toLocalDate()
+    }
 
     return currentDate != previousDate
 }
