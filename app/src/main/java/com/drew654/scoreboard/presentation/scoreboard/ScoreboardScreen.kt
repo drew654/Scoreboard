@@ -20,12 +20,11 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
+import com.drew654.scoreboard.domain.model.scoreboard.getDate
 import com.drew654.scoreboard.presentation.Screen
 import com.drew654.scoreboard.presentation.scoreboard.components.InProgressCompetitionTile
 import com.drew654.scoreboard.presentation.scoreboard.components.ScheduledCompetitionTile
 import com.drew654.scoreboard.presentation.scoreboard.components.WeekPicker
-import java.time.ZoneId
-import java.time.temporal.ChronoUnit
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -122,17 +121,5 @@ private fun shouldShowDateHeader(competitions: List<Competition>, index: Int): B
 
     val currentCompetition = competitions[index]
     val previousCompetition = competitions[index - 1]
-    val zoneId = ZoneId.systemDefault()
-    val currentDate = if (currentCompetition.status.type.shortDetail == "TBD") {
-        currentCompetition.date.truncatedTo(ChronoUnit.DAYS).atZone(ZoneId.of("UTC")).toLocalDate()
-    } else {
-        currentCompetition.date.atZone(zoneId).toLocalDate()
-    }
-    val previousDate = if (previousCompetition.status.type.shortDetail == "TBD") {
-        previousCompetition.date.truncatedTo(ChronoUnit.DAYS).atZone(ZoneId.of("UTC")).toLocalDate()
-    } else {
-        previousCompetition.date.atZone(zoneId).toLocalDate()
-    }
-
-    return currentDate != previousDate
+    return currentCompetition.getDate() != previousCompetition.getDate()
 }

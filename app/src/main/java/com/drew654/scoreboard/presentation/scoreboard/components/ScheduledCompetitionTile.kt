@@ -22,6 +22,7 @@ import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
+import com.drew654.scoreboard.domain.model.scoreboard.isTbd
 import com.drew654.scoreboard.presentation.formatTime
 
 @Composable
@@ -29,7 +30,6 @@ fun ScheduledCompetitionTile(competition: Competition) {
     val context = LocalContext.current
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
-    val isTBD = competition.status.type.shortDetail == "TBD"
 
     Card(
         colors = CardDefaults.cardColors(
@@ -53,7 +53,7 @@ fun ScheduledCompetitionTile(competition: Competition) {
                 homeTeam?.let { TeamRow(team = it) }
             }
             Text(
-                text = if (isTBD) "TBD" else formatTime(competition.date, is24HourFormat(context)),
+                text = if (competition.isTbd()) "TBD" else formatTime(competition.date, is24HourFormat(context)),
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier
                     .weight(1.5f)

@@ -9,20 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
-import java.time.ZoneId
+import com.drew654.scoreboard.domain.model.scoreboard.getDate
 import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoUnit
 import java.util.Locale
 
 @Composable
 fun DateHeader(competition: Competition) {
     val formatter = DateTimeFormatter.ofPattern("EEEE, MMM d", Locale.getDefault())
-    val localDate = if (competition.status.type.shortDetail == "TBD") {
-        competition.date.truncatedTo(ChronoUnit.DAYS).atZone(ZoneId.of("UTC")).toLocalDate()
-    } else {
-        competition.date.atZone(ZoneId.systemDefault()).toLocalDate()
-    }
-    val formattedDate = formatter.format(localDate)
+    val formattedDate = formatter.format(competition.getDate())
 
     Text(
         text = formattedDate,
