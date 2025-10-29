@@ -2,7 +2,9 @@ package com.drew654.scoreboard.presentation.scoreboard
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
@@ -38,7 +41,6 @@ fun ScoreboardScreen(
     val selectedEntry = viewModel.selectedCalendarEntry.collectAsState()
     val isWeekPickerVisible = remember { mutableStateOf(false) }
     val pullToRefreshState = rememberPullToRefreshState()
-
 
     if (pullToRefreshState.isRefreshing) {
         LaunchedEffect(true) {
@@ -72,6 +74,7 @@ fun ScoreboardScreen(
                     }
                 )
                 if (isWeekPickerVisible.value) {
+                    Spacer(modifier = Modifier.height(8.dp))
                     LazyColumn(
                         modifier = Modifier.fillMaxSize()
                     ) {
@@ -101,6 +104,9 @@ fun ScoreboardScreen(
                                     )
                                 }
                             }
+                        }
+                        items(1) {
+                            Spacer(modifier = Modifier.height(8.dp))
                         }
                     }
                 }
