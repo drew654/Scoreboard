@@ -8,15 +8,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import java.time.Instant
+import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.Locale
 
 @Composable
-fun DateHeader(instant: Instant) {
+fun DateHeader(competition: Competition) {
     val formatter = DateTimeFormatter.ofPattern("EEEE, MMM d", Locale.getDefault())
-    val localDate = instant.atZone(ZoneId.systemDefault())
+    val localDate = if (competition.status.type.shortDetail == "TBD") {
+        competition.date.truncatedTo(ChronoUnit.DAYS).atZone(ZoneId.of("UTC")).toLocalDate()
+    } else {
+        competition.date.atZone(ZoneId.systemDefault()).toLocalDate()
+    }
     val formattedDate = formatter.format(localDate)
 
     Text(

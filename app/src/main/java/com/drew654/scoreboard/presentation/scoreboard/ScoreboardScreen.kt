@@ -78,7 +78,7 @@ fun ScoreboardScreen(
                     ) {
                         itemsIndexed(competitions) { index, competition ->
                             if (shouldShowDateHeader(competitions, index)) {
-                                DateHeader(competition.date)
+                                DateHeader(competition)
                             }
                             when (competition.status.type.name) {
                                 "STATUS_SCHEDULED" -> {
