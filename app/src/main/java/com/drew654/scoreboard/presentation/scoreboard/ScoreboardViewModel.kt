@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.drew654.scoreboard.common.Constants
 import com.drew654.scoreboard.common.Resource
+import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.ListCalendarEntry
 import com.drew654.scoreboard.domain.use_case.get_scoreboard.GetScoreboardUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,6 +15,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.time.LocalDate
+import java.time.ZoneId
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,9 +56,14 @@ class ScoreboardViewModel @Inject constructor(
                     val competitions =
                         scoreboard?.events?.flatMap { it.competitions } ?: emptyList()
                     val sortedCompetitions = competitions.sortedWith(
-                        compareBy { competition ->
+                        compareByDescending<Competition> {
+                            val competitionDate = it.date
+                                .atZone(ZoneId.systemDefault())
+                                .toLocalDate()
+                            competitionDate == LocalDate.now(ZoneId.systemDefault())
+                        }.thenBy { competition ->
                             statusSortOrder[competition.status.type.name] ?: Int.MAX_VALUE
-                        }
+                        }.thenBy { it.date }
                     )
                     val calendarEntries =
                         scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
