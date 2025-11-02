@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.getDate
@@ -32,7 +31,7 @@ import com.drew654.scoreboard.presentation.scoreboard.components.WeekPicker
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScoreboardScreen(
-    viewModel: ScoreboardViewModel = hiltViewModel(),
+    viewModel: ScoreboardViewModel,
     navController: NavController
 ) {
     val state = viewModel.state.value
@@ -87,17 +86,17 @@ fun ScoreboardScreen(
                                     ScheduledCompetitionTile(competition = competition)
                                 }
 
-                                "STATUS_IN_PROGRESS" -> {
+                                "STATUS_IN_PROGRESS",
+                                "STATUS_END_PERIOD",
+                                "STATUS_HALFTIME" -> {
                                     InProgressCompetitionTile(
                                         competition = competition,
                                         onClick = {
-                                            navController.navigate(Screen.Competition.route)
+                                            navController.navigate("${Screen.Competition.route}/${competition.id}")
                                         }
                                     )
                                 }
 
-                                "STATUS_END_PERIOD",
-                                "STATUS_HALFTIME",
                                 "STATUS_FINAL" -> {
                                     InProgressCompetitionTile(
                                         competition = competition

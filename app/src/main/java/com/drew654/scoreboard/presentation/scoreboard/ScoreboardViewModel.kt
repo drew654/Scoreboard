@@ -24,6 +24,7 @@ class ScoreboardViewModel @Inject constructor(
     private val getScoreboardUseCase: GetScoreboardUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+    private var initialized = false
     private val _state = mutableStateOf(ScoreboardState())
     val state: State<ScoreboardState> = _state
 
@@ -48,7 +49,16 @@ class ScoreboardViewModel @Inject constructor(
         "STATUS_SCHEDULED" to 3
     )
 
-    private fun getScoreboard(sport: String, league: String, week: Int?) {
+    fun loadScoreboard(sport: String, league: String) {
+        if (!initialized || currentSport != sport || currentLeague != league) {
+            initialized = true
+            currentSport = sport
+            currentLeague = league
+            getScoreboard(sport, league)
+        }
+    }
+
+    private fun getScoreboard(sport: String, league: String, week: Int? = null) {
         getScoreboardUseCase(sport, league, week).onEach { result ->
             when (result) {
                 is Resource.Success -> {

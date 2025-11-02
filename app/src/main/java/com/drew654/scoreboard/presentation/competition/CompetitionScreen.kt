@@ -7,11 +7,21 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.presentation.competition.components.BoxScore
+import com.drew654.scoreboard.presentation.scoreboard.ScoreboardViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CompetitionScreen() {
+fun CompetitionScreen(
+    viewModel: ScoreboardViewModel,
+    competitionId: String
+) {
+    val state = viewModel.state.value
+    val competition = state.competitions.find { it.id == competitionId.toInt() }!!
+    val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
+    val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
