@@ -1,20 +1,33 @@
 package com.drew654.scoreboard.presentation.competition.components
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 
 @Composable
-fun BoxScore() {
+fun BoxScore(
+    homeTeam: Competitor,
+    awayTeam: Competitor
+) {
     Card(
         modifier = Modifier
             .padding(16.dp),
@@ -24,13 +37,88 @@ fun BoxScore() {
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Box(
+
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp),
-            contentAlignment = Alignment.Center
+                .padding(12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Box score")
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Spacer(Modifier.weight(1f))
+                Row(
+                    modifier = Modifier.weight(2f),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    homeTeam.linescores?.forEachIndexed { index, linescore ->
+                        Text(
+                            text = "${index + 1}",
+                            modifier = Modifier.width(32.dp),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                    Text(
+                        text = "T",
+                        modifier = Modifier.width(32.dp),
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+            HorizontalDivider(Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp))
+            TeamRow(team = homeTeam)
+            Spacer(Modifier.height(8.dp))
+            TeamRow(team = awayTeam)
+        }
+    }
+}
+
+@Composable
+fun TeamRow(team: Competitor) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            AsyncImage(
+                model = team.team.logo,
+                contentDescription = team.team.displayName,
+                modifier = Modifier.size(16.dp)
+            )
+            Text(
+                text = team.team.shortDisplayName,
+                modifier = Modifier
+                    .padding(start = 4.dp)
+            )
+        }
+        Row(
+            modifier = Modifier.weight(2f),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            team.linescores?.forEach { linescore ->
+                Text(
+                    text = linescore.displayValue,
+                    modifier = Modifier.width(32.dp),
+                    textAlign = TextAlign.Center
+                )
+            }
+            Text(
+                text = team.score.toString(),
+                modifier = Modifier.width(32.dp),
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
         }
     }
 }

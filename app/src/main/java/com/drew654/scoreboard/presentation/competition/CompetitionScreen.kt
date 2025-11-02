@@ -19,8 +19,8 @@ fun CompetitionScreen(
 ) {
     val state = viewModel.state.value
     val competition = state.competitions.find { it.id == competitionId.toInt() }!!
-    val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }
-    val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }
+    val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }!!
+    val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
 
     Box(
         modifier = Modifier
@@ -31,7 +31,7 @@ fun CompetitionScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            BoxScore()
+            BoxScore(homeTeam = homeTeam, awayTeam = awayTeam)
         }
     }
 }
