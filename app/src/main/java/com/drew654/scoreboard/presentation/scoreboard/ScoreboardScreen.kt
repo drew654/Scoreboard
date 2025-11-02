@@ -88,18 +88,13 @@ fun ScoreboardScreen(
 
                                 "STATUS_IN_PROGRESS",
                                 "STATUS_END_PERIOD",
-                                "STATUS_HALFTIME" -> {
+                                "STATUS_HALFTIME",
+                                "STATUS_FINAL" -> {
                                     InProgressCompetitionTile(
                                         competition = competition,
                                         onClick = {
                                             navController.navigate("${Screen.Competition.route}/${competition.id}")
                                         }
-                                    )
-                                }
-
-                                "STATUS_FINAL" -> {
-                                    InProgressCompetitionTile(
-                                        competition = competition
                                     )
                                 }
                             }

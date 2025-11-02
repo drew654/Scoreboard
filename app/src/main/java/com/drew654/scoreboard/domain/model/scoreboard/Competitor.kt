@@ -5,5 +5,6 @@ data class Competitor(
     val homeAway: HomeAway,
     val team: Team,
     val score: Int,
+    val linescores: List<Linescore>?,
     val records: List<Record>
 )

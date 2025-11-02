@@ -11,6 +11,7 @@ data class CompetitorDto(
     val homeAway: HomeAway,
     val team: TeamDto,
     val score: Int,
+    val linescores: List<LinescoreDto>?,
     val records: List<RecordDto>?
 )
 
@@ -20,6 +21,7 @@ fun CompetitorDto.toCompetitor(): Competitor {
         homeAway = homeAway,
         team = team.toTeam(),
         score = score,
+        linescores = linescores.orEmpty().map { it.toLinescore() },
         records = records.orEmpty().map { it.toRecord() }
     )
 }
