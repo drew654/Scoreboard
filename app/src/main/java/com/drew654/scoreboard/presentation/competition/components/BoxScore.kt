@@ -75,9 +75,11 @@ fun BoxScore(
                     )
                 }
             }
-            HorizontalDivider(Modifier
-                .fillMaxWidth()
-                .padding(vertical = 4.dp))
+            HorizontalDivider(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp)
+            )
             TeamRow(team = homeTeam)
             Spacer(Modifier.height(8.dp))
             TeamRow(team = awayTeam)
@@ -138,12 +140,33 @@ fun TeamRow(team: Competitor) {
     showBackground = true
 )
 @Composable
-fun BoxScorePreview() {
+private fun BoxScorePreview1() {
     ScoreboardTheme {
         Surface {
             BoxScore(
-                homeTeam = PreviewData.sampleFinalGame.competitors[0],
-                awayTeam = PreviewData.sampleFinalGame.competitors[1]
+                homeTeam = PreviewData.sampleFinalCompetition.competitors[0],
+                awayTeam = PreviewData.sampleFinalCompetition.competitors[1]
+            )
+        }
+    }
+}
+
+@Preview(
+    name = "Light Mode",
+    showBackground = true
+)
+@Preview(
+    name = "Dark Mode",
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true
+)
+@Composable
+private fun BoxScorePreview2() {
+    ScoreboardTheme {
+        Surface {
+            BoxScore(
+                homeTeam = PreviewData.sampleInProgressCompetition.competitors[0],
+                awayTeam = PreviewData.sampleInProgressCompetition.competitors[1]
             )
         }
     }
