@@ -60,19 +60,14 @@ fun BoxScore(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    homeTeam.linescores?.forEachIndexed { index, linescore ->
+                    listOf("1", "2", "3", "4", "T").forEach { linescore ->
                         Text(
-                            text = "${index + 1}",
+                            text = linescore,
                             modifier = Modifier.width(32.dp),
+                            fontWeight = if (linescore == "T") FontWeight.Bold else null,
                             textAlign = TextAlign.Center
                         )
                     }
-                    Text(
-                        text = "T",
-                        modifier = Modifier.width(32.dp),
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
-                    )
                 }
             }
             HorizontalDivider(
@@ -113,9 +108,10 @@ fun TeamRow(team: Competitor) {
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            team.linescores?.forEach { linescore ->
+            listOf(1, 2, 3, 4).forEach { index ->
+                val linescore = team.linescores?.getOrNull(index - 1)
                 Text(
-                    text = linescore.displayValue,
+                    text = linescore?.displayValue ?: "",
                     modifier = Modifier.width(32.dp),
                     textAlign = TextAlign.Center
                 )
