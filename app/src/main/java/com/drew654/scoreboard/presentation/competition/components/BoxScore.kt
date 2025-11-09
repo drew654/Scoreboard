@@ -165,8 +165,8 @@ private fun BoxScorePreview2() {
     ScoreboardTheme {
         Surface {
             BoxScore(
-                homeTeam = PreviewData.sampleInProgressCompetition.competitors[0],
-                awayTeam = PreviewData.sampleInProgressCompetition.competitors[1]
+                homeTeam = PreviewData.sampleEndPeriodCompetition.competitors[0],
+                awayTeam = PreviewData.sampleEndPeriodCompetition.competitors[1]
             )
         }
     }

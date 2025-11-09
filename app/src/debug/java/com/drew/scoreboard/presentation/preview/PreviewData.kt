@@ -160,7 +160,7 @@ object PreviewData {
         )
     )
 
-    val sampleInProgressCompetition = Competition(
+    val sampleEndPeriodCompetition = Competition(
         id = 401752763,
         competitors = listOf(
             Competitor(
@@ -271,6 +271,131 @@ object PreviewData {
                 description = "End of Period",
                 detail = "End of 1st Quarter",
                 shortDetail = "End of 1st"
+            )
+        )
+    )
+
+    val sampleInProgressCompetition = Competition(
+        id = 401752763,
+        competitors = listOf(
+            Competitor(
+                id = 142,
+                homeAway = HomeAway.HOME,
+                team = Team(
+                    id = 142,
+                    location = "Missouri",
+                    name = "Tigers",
+                    abbreviation = "MIZ",
+                    displayName = "Missouri Tigers",
+                    shortDisplayName = "Missouri",
+                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png"
+                ),
+                score = 0,
+                linescores = listOf(
+                    Linescore(
+                        value = 0,
+                        displayValue = "0",
+                        period = 1
+                    ),
+                    Linescore(
+                        value = 0,
+                        displayValue = "0",
+                        period = 2
+                    )
+                ),
+                records = listOf(
+                    Record(
+                        name = "overall",
+                        abbreviation = "overall",
+                        type = RecordType.OVERALL,
+                        summary = "6-2"
+                    ),
+                    Record(
+                        name = "Home",
+                        abbreviation = "Home",
+                        type = RecordType.HOME,
+                        summary = "5-1"
+                    ),
+                    Record(
+                        name = "Away",
+                        abbreviation = "Away",
+                        type = RecordType.AWAY,
+                        summary = "1-1"
+                    ),
+                    Record(
+                        name = "vs. Conf.",
+                        abbreviation = "CONF",
+                        type = RecordType.CONF,
+                        summary = "2-2"
+                    )
+                )
+            ),
+            Competitor(
+                id = 245,
+                homeAway = HomeAway.AWAY,
+                team = Team(
+                    id = 245,
+                    location = "Texas A&M",
+                    name = "Aggies",
+                    abbreviation = "TA&M",
+                    displayName = "Texas A&M Aggies",
+                    shortDisplayName = "Texas A&M",
+                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png"
+                ),
+                score = 7,
+                linescores = listOf(
+                    Linescore(
+                        value = 7,
+                        displayValue = "7",
+                        period = 1
+                    ),
+                    Linescore(
+                        value = 0,
+                        displayValue = "0",
+                        period = 2
+                    )
+                ),
+                records = listOf(
+                    Record(
+                        name = "overall",
+                        abbreviation = "overall",
+                        type = RecordType.OVERALL,
+                        summary = "8 - 0"
+                    ),
+                    Record(
+                        name = "Home",
+                        abbreviation = "Home",
+                        type = RecordType.HOME,
+                        summary = "5 - 0"
+                    ),
+                    Record(
+                        name = "Away",
+                        abbreviation = "Away",
+                        type = RecordType.AWAY,
+                        summary = "3 - 0"
+                    ),
+                    Record(
+                        name = "vs.Conf.",
+                        abbreviation = "CONF",
+                        type = RecordType.CONF,
+                        summary = "5 - 0"
+                    )
+                )
+            )
+        ),
+        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
+        status = Status(
+            clock = 858,
+            displayClock = "14:18",
+            period = 2,
+            type = StatusType(
+                id = 2,
+                name = "STATUS_IN_PROGRESS",
+                state = "in",
+                completed = false,
+                description = "In Progress",
+                detail = "14:18 - 2nd Quarter",
+                shortDetail = "14:18 - 2nd"
             )
         )
     )
