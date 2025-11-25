@@ -2,10 +2,16 @@ package com.drew.scoreboard.presentation.preview
 
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
+import com.drew654.scoreboard.domain.model.scoreboard.Event
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
+import com.drew654.scoreboard.domain.model.scoreboard.League
 import com.drew654.scoreboard.domain.model.scoreboard.Linescore
+import com.drew654.scoreboard.domain.model.scoreboard.ListCalendar
+import com.drew654.scoreboard.domain.model.scoreboard.ListCalendarEntry
 import com.drew654.scoreboard.domain.model.scoreboard.Record
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
+import com.drew654.scoreboard.domain.model.scoreboard.Scoreboard
+import com.drew654.scoreboard.domain.model.scoreboard.Season
 import com.drew654.scoreboard.domain.model.scoreboard.Status
 import com.drew654.scoreboard.domain.model.scoreboard.StatusType
 import com.drew654.scoreboard.domain.model.scoreboard.Team
@@ -396,6 +402,2208 @@ object PreviewData {
                 description = "In Progress",
                 detail = "14:18 - 2nd Quarter",
                 shortDetail = "14:18 - 2nd"
+            )
+        )
+    )
+
+    val sampleScoreboard = Scoreboard(
+        leagues = listOf(
+            League(
+                id = 23,
+                name = "NCAA - Football",
+                abbreviation = "NCAAF",
+                midsizeName = "NCAA Football",
+                slug = "college-football",
+                calendar = listOf(
+                    ListCalendar(
+                        label = "Regular Season",
+                        value = 2,
+                        startDate = Instant.from(formatter.parse("2025-08-23T07:00:00Z")),
+                        endDate = Instant.from(formatter.parse("2025-12-14T07:59:00Z")),
+                        entries = listOf(
+                            ListCalendarEntry(
+                                label = "Week 1",
+                                alternateLabel = "Week 1",
+                                detail = "Aug 23-Sep 1",
+                                value = 1,
+                                startDate = Instant.from(formatter.parse("2025-08-23T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-09-02T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 2",
+                                alternateLabel = "Week 2",
+                                detail = "Sep 2-7",
+                                value = 2,
+                                startDate = Instant.from(formatter.parse("2025-09-02T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-09-08T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 3",
+                                alternateLabel = "Week 3",
+                                detail = "Sep 8-14",
+                                value = 3,
+                                startDate = Instant.from(formatter.parse("2025-09-08T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-09-15T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 4",
+                                alternateLabel = "Week 4",
+                                detail = "Sep 15-21",
+                                value = 4,
+                                startDate = Instant.from(formatter.parse("2025-09-15T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-09-22T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 5",
+                                alternateLabel = "Week 5",
+                                detail = "Sep 22-28",
+                                value = 5,
+                                startDate = Instant.from(formatter.parse("2025-09-22T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-09-29T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 6",
+                                alternateLabel = "Week 6",
+                                detail = "Sep 29-Oct 5",
+                                value = 6,
+                                startDate = Instant.from(formatter.parse("2025-09-29T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-10-06T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 7",
+                                alternateLabel = "Week 7",
+                                detail = "Oct 6-12",
+                                value = 7,
+                                startDate = Instant.from(formatter.parse("2025-10-06T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-10-13T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 8",
+                                alternateLabel = "Week 8",
+                                detail = "Oct 13-19",
+                                value = 8,
+                                startDate = Instant.from(formatter.parse("2025-10-13T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-10-20T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 9",
+                                alternateLabel = "Week 9",
+                                detail = "Oct 20-26",
+                                value = 9,
+                                startDate = Instant.from(formatter.parse("2025-10-20T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-10-27T06:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 10",
+                                alternateLabel = "Week 10",
+                                detail = "Oct 27-Nov 2",
+                                value = 10,
+                                startDate = Instant.from(formatter.parse("2025-10-27T07:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-11-03T07:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 11",
+                                alternateLabel = "Week 11",
+                                detail = "Nov 3-9",
+                                value = 11,
+                                startDate = Instant.from(formatter.parse("2025-11-03T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-11-10T07:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 12",
+                                alternateLabel = "Week 12",
+                                detail = "Nov 10-16",
+                                value = 12,
+                                startDate = Instant.from(formatter.parse("2025-11-10T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-11-17T07:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 13",
+                                alternateLabel = "Week 13",
+                                detail = "Nov 17-23",
+                                value = 13,
+                                startDate = Instant.from(formatter.parse("2025-11-17T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-11-24T07:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 14",
+                                alternateLabel = "Week 14",
+                                detail = "Nov 24-30",
+                                value = 14,
+                                startDate = Instant.from(formatter.parse("2025-11-24T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-12-01T07:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 15",
+                                alternateLabel = "Week 15",
+                                detail = "Dec 1-7",
+                                value = 15,
+                                startDate = Instant.from(formatter.parse("2025-12-01T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2025-12-08T07:59:00Z")),
+                                calendarValue = 2
+                            ),
+                            ListCalendarEntry(
+                                label = "Week 16",
+                                alternateLabel = "Week 16",
+                                detail = "Dec 8-13",
+                                value = 16,
+                                startDate = Instant.from(formatter.parse("2025-12-08T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2026-12-14T07:59:00Z")),
+                                calendarValue = 2
+                            )
+                        )
+                    ),
+                    ListCalendar(
+                        label = "Postseason",
+                        value = 3,
+                        startDate = Instant.from(formatter.parse("2025-12-13T08:00:00Z")),
+                        endDate = Instant.from(formatter.parse("2026-01-21T07:59:00Z")),
+                        entries = listOf(
+                            ListCalendarEntry(
+                                label = "Bowls",
+                                alternateLabel = "Bowls",
+                                detail = "Dec 13-Jan 20",
+                                value = 1,
+                                startDate = Instant.from(formatter.parse("2025-12-13T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2026-01-21T07:59:00Z")),
+                                calendarValue = 3
+                            ),
+                            ListCalendarEntry(
+                                label = "CFP",
+                                alternateLabel = "CFP",
+                                detail = "Dec 19-Jan 20",
+                                value = 999,
+                                startDate = Instant.from(formatter.parse("2025-12-19T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2026-01-20T07:59:00Z")),
+                                calendarValue = 3
+                            )
+                        )
+                    ),
+                    ListCalendar(
+                        label = "Off Season",
+                        value = 4,
+                        startDate = Instant.from(formatter.parse("2026-01-21T08:00:00Z")),
+                        endDate = Instant.from(formatter.parse("2026-02-01T07:59:00Z")),
+                        entries = listOf(
+                            ListCalendarEntry(
+                                label = "All-Star",
+                                alternateLabel = "All-Star",
+                                detail = "Jan 21-31",
+                                value = 1,
+                                startDate = Instant.from(formatter.parse("2026-01-21T08:00:00Z")),
+                                endDate = Instant.from(formatter.parse("2026-02-01T07:59:00Z")),
+                                calendarValue = 4
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        season = Season(
+            type = 2,
+            year = 2025
+        ),
+        events = listOf(
+            Event(
+                id = 401752763,
+                name = "Texas A&M Aggies at Missouri Tigers",
+                shortName = "TA&M @ MIZ",
+                competitions = listOf(
+                    Competition(
+                        id = 401752763,
+                        competitors = listOf(
+                            Competitor(
+                                id = 142,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 142,
+                                    location = "Missouri",
+                                    name = "Tigers",
+                                    abbreviation = "MIZ",
+                                    displayName = "Missouri Tigers",
+                                    shortDisplayName = "Missouri",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "6-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "5-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "1-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "2-2"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 245,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 245,
+                                    location = "Texas A&M",
+                                    name = "Aggies",
+                                    abbreviation = "TA&M",
+                                    displayName = "Texas A&M Aggies",
+                                    shortDisplayName = "Texas A&M",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png"
+                                ),
+                                score = 7,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "8-0"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "5-0"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "3-0"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "5-0"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
+                        status = Status(
+                            clock = 110,
+                            displayClock = "1:50",
+                            period = 2,
+                            type = StatusType(
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "1:50 - 2nd Quarter",
+                                shortDetail = "1:50 - 2nd"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752898,
+                name = "Oregon Ducks at Iowa Hawkeyes",
+                shortName = "ORE @ IOWA",
+                competitions = listOf(
+                    Competition(
+                        id = 401752898,
+                        competitors = listOf(
+                            Competitor(
+                                id = 2294,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 2294,
+                                    location = "Iowa",
+                                    name = "Hawkeyes",
+                                    abbreviation = "IOWA",
+                                    displayName = "Iowa Hawkeyes",
+                                    shortDisplayName = "Iowa",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png"
+                                ),
+                                score = 7,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "6-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "4-1"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 2483,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 2483,
+                                    location = "Oregon",
+                                    name = "Ducks",
+                                    abbreviation = "ORE",
+                                    displayName = "Oregon Ducks",
+                                    shortDisplayName = "Oregon",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png"
+                                ),
+                                score = 9,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 2,
+                                        displayValue = "2",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "3-0"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "4-1"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
+                        status = Status(
+                            clock = 92,
+                            displayClock = "1:32",
+                            period = 2,
+                            type = StatusType(
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "1:32 - 2nd Quarter",
+                                shortDetail = "1:32 - 2nd"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401754587,
+                name = "Syracuse Orange at Miami Hurricanes",
+                shortName = "SYR @ MIA",
+                competitions = listOf(
+                    Competition(
+                        id = 401754587,
+                        competitors = listOf(
+                            Competitor(
+                                id = 2390,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 2390,
+                                    location = "Miami",
+                                    name = "Hurricanes",
+                                    abbreviation = "MIA",
+                                    displayName = "Miami Hurricanes",
+                                    shortDisplayName = "Miami",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png"
+                                ),
+                                score = 14,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "6-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "5-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "1-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "2-2"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 183,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 183,
+                                    location = "Syracuse",
+                                    name = "Orange",
+                                    abbreviation = "SYR",
+                                    displayName = "Syracuse Orange",
+                                    shortDisplayName = "Syracuse",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/183.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "3-6"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "2-3"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "1-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "1-5"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
+                        status = Status(
+                            clock = 35,
+                            displayClock = "0:35",
+                            period = 2,
+                            type = StatusType(
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "0:35 - 2nd Quarter",
+                                shortDetail = "0:35 - 2nd"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752764,
+                name = "Auburn Tigers at Vanderbilt Commodores",
+                shortName = "AUB @ VAN",
+                competitions = listOf(
+                    Competition(
+                        id = 401752764,
+                        competitors = listOf(
+                            Competitor(
+                                id = 238,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 238,
+                                    location = "Vanderbilt",
+                                    name = "Commodores",
+                                    abbreviation = "VAN",
+                                    displayName = "Vanderbilt Commodores",
+                                    shortDisplayName = "Vanderbilt",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png"
+                                ),
+                                score = 3,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "5-0"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "3-2"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 2,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 2,
+                                    location = "Auburn",
+                                    name = "Tigers",
+                                    abbreviation = "AUB",
+                                    displayName = "Auburn Tigers",
+                                    shortDisplayName = "Auburn",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png"
+                                ),
+                                score = 14,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 2
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "4-5"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "2-3"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "1-5"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T21:00:00Z")),
+                        status = Status(
+                            clock = 330,
+                            displayClock = "5:30",
+                            period = 2,
+                            type = StatusType(
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "5:30 - 2nd Quarter",
+                                shortDetail = "5:30 - 2nd"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752899,
+                name = "Washington Huskies at Wisconsin Badgers",
+                shortName = "WASH @ WIS",
+                competitions = listOf(
+                    Competition(
+                        id = 401752899,
+                        competitors = listOf(
+                            Competitor(
+                                id = 275,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 275,
+                                    location = "Wisconsin",
+                                    name = "Badgers",
+                                    abbreviation = "WIS",
+                                    displayName = "Wisconsin Badgers",
+                                    shortDisplayName = "Wisconsin",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "2-6"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "2-3"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "0-3"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "0-5"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 264,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 264,
+                                    location = "Washington",
+                                    name = "Huskies",
+                                    abbreviation = "WASH",
+                                    displayName = "Washington Huskies",
+                                    shortDisplayName = "Washington",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "6-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "3-2"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T21:30:00Z")),
+                        status = Status(
+                            clock = 493,
+                            displayClock = "8:13",
+                            period = 1,
+                            type = StatusType(
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "8:13 - 1st Quarter",
+                                shortDetail = "8:13 - 1st"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752897,
+                name = "Ohio State Buckeyes at Purdue Boilermakers",
+                shortName = "OSU @ PUR",
+                competitions = listOf(
+                    Competition(
+                        id = 401752897,
+                        competitors = listOf(
+                            Competitor(
+                                id = 2509,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 2509,
+                                    location = "Purdue",
+                                    name = "Boilermakers",
+                                    abbreviation = "PUR",
+                                    displayName = "Purdue Boilermakers",
+                                    shortDisplayName = "Purdue",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2509.png"
+                                ),
+                                score = 10,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "2-8"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "2-4"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "0-4"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "0-7"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 194,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 194,
+                                    location = "Ohio State",
+                                    name = "Buckeyes",
+                                    abbreviation = "OSU",
+                                    displayName = "Ohio State Buckeyes",
+                                    shortDisplayName = "Ohio State",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png"
+                                ),
+                                score = 34,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 24,
+                                        displayValue = "24",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 10,
+                                        displayValue = "10",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "9-0"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "5-0"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "4-0"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "6-0"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T18:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusType(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752893,
+                name = "Indiana Hoosiers at Penn State Nittany Lions",
+                shortName = "IU @ PSU",
+                competitions = listOf(
+                    Competition(
+                        id = 401752893,
+                        competitors = listOf(
+                            Competitor(
+                                id = 213,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 213,
+                                    location = "Penn State",
+                                    name = "Nittany Lions",
+                                    abbreviation = "PSU",
+                                    displayName = "Penn State Nittany Lions",
+                                    shortDisplayName = "Penn State",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png"
+                                ),
+                                score = 24,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "3-6"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "3-3"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "0-3"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "0-6"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 84,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 84,
+                                    location = "Indiana",
+                                    name = "Hoosiers",
+                                    abbreviation = "IU",
+                                    displayName = "Indiana Hoosiers",
+                                    shortDisplayName = "Indiana",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/84.png"
+                                ),
+                                score = 27,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 10,
+                                        displayValue = "10",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "10-0"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "6-0"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "4-0"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "7-0"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T17:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusType(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752762,
+                name = "Georgia Bulldogs at Mississippi State Bulldogs",
+                shortName = "UGA @ MSST",
+                competitions = listOf(
+                    Competition(
+                        id = 401752762,
+                        competitors = listOf(
+                            Competitor(
+                                id = 344,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 344,
+                                    location = "Mississippi State",
+                                    name = "Bulldogs",
+                                    abbreviation = "MSST",
+                                    displayName = "Mississippi State Bulldogs",
+                                    shortDisplayName = "Mississippi St",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/344.png"
+                                ),
+                                score = 21,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "5-5"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "3-3"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "2-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "1-5"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 61,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 61,
+                                    location = "Georgia",
+                                    name = "Bulldogs",
+                                    abbreviation = "UGA",
+                                    displayName = "Georgia Bulldogs",
+                                    shortDisplayName = "Georgia",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/61.png"
+                                ),
+                                score = 41,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 21,
+                                        displayValue = "21",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "8-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "3-0"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "6-1"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T17:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusType(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752761,
+                name = "The Citadel Bulldogs at Ole Miss Rebels",
+                shortName = "CIT @ MISS",
+                competitions = listOf(
+                    Competition(
+                        id = 401752761,
+                        competitors = listOf(
+                            Competitor(
+                                id = 145,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 145,
+                                    location = "Ole Miss",
+                                    name = "Rebels",
+                                    abbreviation = "MISS",
+                                    displayName = "Ole Miss Rebels",
+                                    shortDisplayName = "Ole Miss",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png"
+                                ),
+                                score = 49,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 21,
+                                        displayValue = "21",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "9-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "7-0"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "2-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "5-1"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 2643,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 2643,
+                                    location = "The Citadel",
+                                    name = "Bulldogs",
+                                    abbreviation = "CIT",
+                                    displayName = "The Citadel Bulldogs",
+                                    shortDisplayName = "The Citadel",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "4-6"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "2-3"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "2-3"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "3-3"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T18:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusType(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401756945,
+                name = "BYU Cougars at Texas Tech Red Raiders",
+                shortName = "BYU @ TTU",
+                competitions = listOf(
+                    Competition(
+                        id = 401756945,
+                        competitors = listOf(
+                            Competitor(
+                                id = 2641,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 2641,
+                                    location = "Texas Tech",
+                                    name = "Red Raiders",
+                                    abbreviation = "TTU",
+                                    displayName = "Texas Tech Red Raiders",
+                                    shortDisplayName = "Texas Tech",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png"
+                                ),
+                                score = 29,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 10,
+                                        displayValue = "10",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 6,
+                                        displayValue = "6",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 10,
+                                        displayValue = "10",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "9-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "6-0"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "3-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "6-1"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 252,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 252,
+                                    location = "BYU",
+                                    name = "Cougars",
+                                    abbreviation = "BYU",
+                                    displayName = "BYU Cougars",
+                                    shortDisplayName = "BYU",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png"
+                                ),
+                                score = 7,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "8-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "4-0"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "5-1"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T17:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusType(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401754589,
+                name = "Wake Forest Demon Deacons at Virginia Cavaliers",
+                shortName = "WAKE @ UVA",
+                competitions = listOf(
+                    Competition(
+                        id = 401754589,
+                        competitors = listOf(
+                            Competitor(
+                                id = 258,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 258,
+                                    location = "Virginia",
+                                    name = "Cavaliers",
+                                    abbreviation = "UVA",
+                                    displayName = "Virginia Cavaliers",
+                                    shortDisplayName = "Virginia",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "8-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "5-0"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "3-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "5-0"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 154,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 154,
+                                    location = "Wake Forest",
+                                    name = "Demon Deacons",
+                                    abbreviation = "WAKE",
+                                    displayName = "Wake Forest Demon Deacons",
+                                    shortDisplayName = "Wake Forest",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/154.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "5-3"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "3-2"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "2-3"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-09T00:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 0,
+                            type = StatusType(
+                                id = 1,
+                                name = "STATUS_SCHEDULED",
+                                state = "pre",
+                                completed = false,
+                                description = "Scheduled",
+                                detail = "Sat, November 8th at 7:00 PM EST",
+                                shortDetail = "11/8 - 7:00 PM EST"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401754585,
+                name = "California Golden Bears at Louisville Cardinals",
+                shortName = "CAL @ LOU",
+                competitions = listOf(
+                    Competition(
+                        id = 401754585,
+                        competitors = listOf(
+                            Competitor(
+                                id = 97,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 97,
+                                    location = "Louisville",
+                                    name = "Cardinals",
+                                    abbreviation = "LOU",
+                                    displayName = "Louisville Cardinals",
+                                    shortDisplayName = "Louisville",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/97.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "3-0"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "4-1"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 25,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 25,
+                                    location = "California",
+                                    name = "Golden Bears",
+                                    abbreviation = "CAL",
+                                    displayName = "California Golden Bears",
+                                    shortDisplayName = "California",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "5-4"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "3-2"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "2-3"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-09T00:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 0,
+                            type = StatusType(
+                                id = 1,
+                                name = "STATUS_SCHEDULED",
+                                state = "pre",
+                                completed = false,
+                                description = "Scheduled",
+                                detail = "Sat, November 8th at 7:00 PM EST",
+                                shortDetail = "11/8 - 7:00 PM EST"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752759,
+                name = "LSU Tigers at Alabama Crimson Tide",
+                shortName = "LSU @ ALA",
+                competitions = listOf(
+                    Competition(
+                        id = 401752759,
+                        competitors = listOf(
+                            Competitor(
+                                id = 333,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 333,
+                                    location = "Alabama",
+                                    name = "Crimson Tide",
+                                    abbreviation = "ALA",
+                                    displayName = "Alabama Crimson Tide",
+                                    shortDisplayName = "Alabama",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/333.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-0"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "3-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "5-0"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 99,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 99,
+                                    location = "LSU",
+                                    name = "Tigers",
+                                    abbreviation = "LSU",
+                                    displayName = "LSU Tigers",
+                                    shortDisplayName = "LSU",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "5-3"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "1-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "2-3"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-09T00:30:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 0,
+                            type = StatusType(
+                                id = 1,
+                                name = "STATUS_SCHEDULED",
+                                state = "pre",
+                                completed = false,
+                                description = "Scheduled",
+                                detail = "Sat, November 8th at 7:30 PM EST",
+                                shortDetail = "11/8 - 7:30 PM EST"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401757166,
+                name = "Navy Midshipmen at Notre Dame Fighting Irish",
+                shortName = "NAVY @ ND",
+                competitions = listOf(
+                    Competition(
+                        id = 401757166,
+                        competitors = listOf(
+                            Competitor(
+                                id = 87,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 87,
+                                    location = "Notre Dame",
+                                    name = "Fighting Irish",
+                                    abbreviation = "ND",
+                                    displayName = "Notre Dame Fighting Irish",
+                                    shortDisplayName = "Notre Dame",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/87.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "6-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "0-0"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 2426,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 2426,
+                                    location = "Navy",
+                                    name = "Midshipmen",
+                                    abbreviation = "NAVY",
+                                    displayName = "Navy Midshipmen",
+                                    shortDisplayName = "Navy",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2426.png"
+                                ),
+                                score = 0,
+                                linescores = listOf(),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-1"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "5-0"
+                                    ),
+                                    Record(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "2-1"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "5-1"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-09T00:30:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 0,
+                            type = StatusType(
+                                id = 1,
+                                name = "STATUS_SCHEDULED",
+                                state = "pre",
+                                completed = false,
+                                description = "Scheduled",
+                                detail = "Sat, November 8th at 7:30 PM EST",
+                                shortDetail = "11/8 - 7:30 PM EST"
+                            )
+                        )
+                    )
+                )
+            ),
+            Event(
+                id = 401752896,
+                name = "Northwestern Wildcats at USC Trojans",
+                shortName = "NU @ USC",
+                competitions = listOf(
+                    Competition(
+                        id = 401752896,
+                        competitors = listOf(
+                            Competitor(
+                                id = 30,
+                                homeAway = HomeAway.HOME,
+                                team = Team(
+                                    id = 30,
+                                    location = "USC",
+                                    name = "Trojans",
+                                    abbreviation = "USC",
+                                    displayName = "USC Trojans",
+                                    shortDisplayName = "USC",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png"
+                                ),
+                                score = 38,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 10,
+                                        displayValue = "10",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-2"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "5-0"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "2-2"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "5-1"
+                                    )
+                                )
+                            ),
+                            Competitor(
+                                id = 77,
+                                homeAway = HomeAway.AWAY,
+                                team = Team(
+                                    id = 77,
+                                    location = "Northwestern",
+                                    name = "Wildcats",
+                                    abbreviation = "NU",
+                                    displayName = "Northwestern Wildcats",
+                                    shortDisplayName = "Northwestern",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png"
+                                ),
+                                score = 17,
+                                linescores = listOf(
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    Linescore(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 2
+                                    ),
+                                    Linescore(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 3
+                                    ),
+                                    Linescore(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    Record(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "5-4"
+                                    ),
+                                    Record(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "4-1"
+                                    ),
+                                    Record(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "1-3"
+                                    ),
+                                    Record(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "3-3"
+                                    )
+                                )
+                            )
+                        ),
+                        date = Instant.from(formatter.parse("2025-11-08T02:00:00Z")),
+                        status = Status(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusType(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
             )
         )
     )
