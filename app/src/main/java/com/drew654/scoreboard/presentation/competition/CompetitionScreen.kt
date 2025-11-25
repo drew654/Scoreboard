@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.presentation.competition.components.BoxScore
+import com.drew654.scoreboard.presentation.competition.components.Header
 import com.drew654.scoreboard.presentation.scoreboard.ScoreboardViewModel
 
 @Composable
@@ -29,6 +30,7 @@ fun CompetitionScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
+            Header(competition = competition, homeTeam = homeTeam, awayTeam = awayTeam)
             BoxScore(homeTeam = homeTeam, awayTeam = awayTeam)
         }
     }
