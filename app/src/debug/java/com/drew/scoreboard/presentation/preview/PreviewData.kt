@@ -414,6 +414,8 @@ object PreviewData {
                 abbreviation = "NCAAF",
                 midsizeName = "NCAA Football",
                 slug = "college-football",
+                calendarStartDate = Instant.from(formatter.parse("2025-02-01T08:00Z")),
+                calendarEndDate = Instant.from(formatter.parse("2026-01-21T07:59Z")),
                 calendar = listOf(
                     ListCalendar(
                         label = "Regular Season",

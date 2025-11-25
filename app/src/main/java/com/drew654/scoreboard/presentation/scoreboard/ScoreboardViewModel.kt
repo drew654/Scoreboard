@@ -80,9 +80,11 @@ class ScoreboardViewModel @Inject constructor(
                             statusSortOrder[competition.status.type.name] ?: Int.MAX_VALUE
                         }.thenBy { it.date }
                     )
-                    val calendarEntries =
-                        scoreboard?.leagues?.find { it.id == 23 }?.calendar?.flatMap { it.entries }
-                            ?: emptyList()
+                    val league = scoreboard?.leagues?.find { it.id == 23 }!!
+                    val calendarEntries = league.calendar.flatMap { it.entries }
+                        .filter { entry ->
+                            entry.startDate >= league.calendarStartDate && entry.endDate <= league.calendarEndDate
+                        }
 
                     _state.value = ScoreboardState(
                         isLoading = false,
