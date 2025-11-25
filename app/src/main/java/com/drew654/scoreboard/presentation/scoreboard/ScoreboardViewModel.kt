@@ -113,9 +113,10 @@ class ScoreboardViewModel @Inject constructor(
 
     fun refresh() {
         val week = selectedCalendarEntry.value?.value
+        val seasonType = selectedCalendarEntry.value?.calendarValue
         currentLeague?.let { league ->
             currentSport?.let { sport ->
-                getScoreboard(sport, league, week)
+                getScoreboard(sport, league, week, seasonType)
             }
         }
     }
