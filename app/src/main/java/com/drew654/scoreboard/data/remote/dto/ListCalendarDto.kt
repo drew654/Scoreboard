@@ -19,6 +19,6 @@ fun ListCalendarDto.toListCalendar(): ListCalendar {
         value = value,
         startDate = Instant.from(formatter.parse(startDate)),
         endDate = Instant.from(formatter.parse(endDate)),
-        entries = entries.map { it.toListCalendarEntry() }
+        entries = entries.map { it.toListCalendarEntry(value) }
     )
 }

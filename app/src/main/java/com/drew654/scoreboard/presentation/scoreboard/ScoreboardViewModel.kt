@@ -58,8 +58,13 @@ class ScoreboardViewModel @Inject constructor(
         }
     }
 
-    private fun getScoreboard(sport: String, league: String, week: Int? = null) {
-        getScoreboardUseCase(sport, league, week).onEach { result ->
+    private fun getScoreboard(
+        sport: String,
+        league: String,
+        week: Int? = null,
+        seasonType: Int? = null
+    ) {
+        getScoreboardUseCase(sport, league, week, seasonType).onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     val scoreboard = result.data
@@ -76,18 +81,18 @@ class ScoreboardViewModel @Inject constructor(
                         }.thenBy { it.date }
                     )
                     val calendarEntries =
-                        scoreboard?.leagues?.find { it.id == 23 }?.calendar?.find { it.value == 2 }?.entries
+                        scoreboard?.leagues?.find { it.id == 23 }?.calendar?.flatMap { it.entries }
                             ?: emptyList()
 
                     _state.value = ScoreboardState(
                         isLoading = false,
                         scoreboard = scoreboard,
                         competitions = sortedCompetitions,
-                        calendarEntries = if (week == null) calendarEntries else state.value.calendarEntries
+                        calendarEntries = if (week == null || seasonType == null) calendarEntries else state.value.calendarEntries
                     )
 
-                    if (week == null) {
-                        setInitialCalendarEntry(calendarEntries, week)
+                    if (week == null || seasonType == null) {
+                        setInitialCalendarEntry(calendarEntries, week, seasonType)
                     }
                 }
 
@@ -115,11 +120,15 @@ class ScoreboardViewModel @Inject constructor(
         }
     }
 
-    private fun setInitialCalendarEntry(calendarEntries: List<ListCalendarEntry>, week: Int?) {
+    private fun setInitialCalendarEntry(
+        calendarEntries: List<ListCalendarEntry>,
+        week: Int?,
+        seasonType: Int?
+    ) {
         val now = System.currentTimeMillis()
         val currentWeekEntry =
             if (week == null) calendarEntries.find { now in it.startDate.toEpochMilli()..it.endDate.toEpochMilli() }
-            else calendarEntries.find { it.value == week }
+            else calendarEntries.find { it.value == week && if (seasonType == null) true else it.calendarValue == seasonType }
 
         setSelectedCalendarEntry(currentWeekEntry ?: calendarEntries.first())
     }
@@ -134,7 +143,7 @@ class ScoreboardViewModel @Inject constructor(
 
         currentLeague?.let { league ->
             currentSport?.let { sport ->
-                getScoreboard(sport, league, entry.value)
+                getScoreboard(sport, league, entry.value, entry.calendarValue)
             }
         }
     }

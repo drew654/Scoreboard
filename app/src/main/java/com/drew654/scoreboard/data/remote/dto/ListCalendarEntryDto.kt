@@ -13,7 +13,7 @@ data class ListCalendarEntryDto(
     val endDate: String
 )
 
-fun ListCalendarEntryDto.toListCalendarEntry(): ListCalendarEntry {
+fun ListCalendarEntryDto.toListCalendarEntry(calendarValue: Int): ListCalendarEntry {
     val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
     return ListCalendarEntry(
         label = label,
@@ -21,6 +21,7 @@ fun ListCalendarEntryDto.toListCalendarEntry(): ListCalendarEntry {
         detail = detail,
         value = value,
         startDate = Instant.from(formatter.parse(startDate)),
-        endDate = Instant.from(formatter.parse(endDate))
+        endDate = Instant.from(formatter.parse(endDate)),
+        calendarValue = calendarValue
     )
 }

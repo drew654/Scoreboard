@@ -83,7 +83,7 @@ fun BoxScore(
 }
 
 @Composable
-fun TeamRow(team: Competitor) {
+private fun TeamRow(team: Competitor) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),

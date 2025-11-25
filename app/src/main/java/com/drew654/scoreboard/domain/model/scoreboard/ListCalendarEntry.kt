@@ -8,5 +8,6 @@ data class ListCalendarEntry(
     val detail: String,
     val value: Int,
     val startDate: Instant,
-    val endDate: Instant
+    val endDate: Instant,
+    val calendarValue: Int
 )

@@ -10,6 +10,7 @@ interface EspnApi {
     suspend fun getScoreboard(
         @Path("sport") sport: String,
         @Path("league") league: String,
-        @Query("week") week: Int?
+        @Query("seasontype") seasonType: Int?,
+        @Query("week") week: Int?,
     ): ScoreboardDto
 }
