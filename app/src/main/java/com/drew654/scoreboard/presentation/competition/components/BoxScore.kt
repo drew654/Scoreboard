@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.drew.scoreboard.presentation.preview.PreviewData
+import com.drew654.scoreboard.data.remote.dto.toCompetitor
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
 
@@ -140,8 +141,8 @@ private fun BoxScorePreview1() {
     ScoreboardTheme {
         Surface {
             BoxScore(
-                homeTeam = PreviewData.sampleFinalCompetition.competitors[0],
-                awayTeam = PreviewData.sampleFinalCompetition.competitors[1]
+                homeTeam = PreviewData.sampleFinalCompetitionDto.competitors[0].toCompetitor(),
+                awayTeam = PreviewData.sampleFinalCompetitionDto.competitors[1].toCompetitor()
             )
         }
     }
@@ -161,8 +162,8 @@ private fun BoxScorePreview2() {
     ScoreboardTheme {
         Surface {
             BoxScore(
-                homeTeam = PreviewData.sampleEndPeriodCompetition.competitors[0],
-                awayTeam = PreviewData.sampleEndPeriodCompetition.competitors[1]
+                homeTeam = PreviewData.sampleEndPeriodCompetitionDto.competitors[0].toCompetitor(),
+                awayTeam = PreviewData.sampleEndPeriodCompetitionDto.competitors[1].toCompetitor()
             )
         }
     }

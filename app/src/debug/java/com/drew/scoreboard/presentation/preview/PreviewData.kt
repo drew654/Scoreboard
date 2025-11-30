@@ -1,33 +1,29 @@
 package com.drew.scoreboard.presentation.preview
 
-import com.drew654.scoreboard.domain.model.scoreboard.Competition
-import com.drew654.scoreboard.domain.model.scoreboard.Competitor
-import com.drew654.scoreboard.domain.model.scoreboard.Event
+import com.drew654.scoreboard.data.remote.dto.CompetitionDto
+import com.drew654.scoreboard.data.remote.dto.CompetitorDto
+import com.drew654.scoreboard.data.remote.dto.EventDto
+import com.drew654.scoreboard.data.remote.dto.LeagueDto
+import com.drew654.scoreboard.data.remote.dto.LinescoreDto
+import com.drew654.scoreboard.data.remote.dto.ListCalendarDto
+import com.drew654.scoreboard.data.remote.dto.ListCalendarEntryDto
+import com.drew654.scoreboard.data.remote.dto.RecordDto
+import com.drew654.scoreboard.data.remote.dto.ScoreboardDto
+import com.drew654.scoreboard.data.remote.dto.StatusDto
+import com.drew654.scoreboard.data.remote.dto.StatusTypeDto
+import com.drew654.scoreboard.data.remote.dto.TeamDto
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
-import com.drew654.scoreboard.domain.model.scoreboard.League
-import com.drew654.scoreboard.domain.model.scoreboard.Linescore
-import com.drew654.scoreboard.domain.model.scoreboard.ListCalendar
-import com.drew654.scoreboard.domain.model.scoreboard.ListCalendarEntry
-import com.drew654.scoreboard.domain.model.scoreboard.Record
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
-import com.drew654.scoreboard.domain.model.scoreboard.Scoreboard
 import com.drew654.scoreboard.domain.model.scoreboard.Season
-import com.drew654.scoreboard.domain.model.scoreboard.Status
-import com.drew654.scoreboard.domain.model.scoreboard.StatusType
-import com.drew654.scoreboard.domain.model.scoreboard.Team
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 object PreviewData {
-    val formatter: DateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
-
-    val sampleFinalCompetition = Competition(
+    val sampleFinalCompetitionDto = CompetitionDto(
         id = 401752748,
         competitors = listOf(
-            Competitor(
+            CompetitorDto(
                 id = 99,
                 homeAway = HomeAway.HOME,
-                team = Team(
+                team = TeamDto(
                     abbreviation = "LSU",
                     displayName = "LSU Tigers",
                     id = 99,
@@ -38,47 +34,47 @@ object PreviewData {
                 ),
                 score = 25,
                 linescores = listOf(
-                    Linescore(
+                    LinescoreDto(
                         value = 7,
                         displayValue = "7",
                         period = 1
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 11,
                         displayValue = "11",
                         period = 2
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 0,
                         displayValue = "0",
                         period = 3
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 7,
                         displayValue = "7",
                         period = 4
                     )
                 ),
                 records = listOf(
-                    Record(
+                    RecordDto(
                         name = "overall",
                         abbreviation = "Game",
                         type = RecordType.OVERALL,
                         summary = "5-3"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Home",
                         abbreviation = null,
                         type = RecordType.HOME,
                         summary = "4-1"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Road",
                         abbreviation = null,
                         type = RecordType.AWAY,
                         summary = "1-2"
                     ),
-                    Record(
+                    RecordDto(
                         name = "vs. Conf.",
                         abbreviation = null,
                         type = RecordType.CONF,
@@ -86,10 +82,10 @@ object PreviewData {
                     )
                 )
             ),
-            Competitor(
+            CompetitorDto(
                 id = 245,
                 homeAway = HomeAway.AWAY,
-                team = Team(
+                team = TeamDto(
                     abbreviation = "TA&M",
                     displayName = "Texas A&M Aggies",
                     id = 245,
@@ -100,47 +96,47 @@ object PreviewData {
                 ),
                 score = 49,
                 linescores = listOf(
-                    Linescore(
+                    LinescoreDto(
                         value = 14,
                         displayValue = "14",
                         period = 1
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 0,
                         displayValue = "0",
                         period = 2
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 21,
                         displayValue = "21",
                         period = 3
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 14,
                         displayValue = "14",
                         period = 4
                     )
                 ),
                 records = listOf(
-                    Record(
+                    RecordDto(
                         name = "overall",
                         abbreviation = "Game",
                         type = RecordType.OVERALL,
                         summary = "8-0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Home",
                         abbreviation = null,
                         type = RecordType.HOME,
                         summary = "5-0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Road",
                         abbreviation = null,
                         type = RecordType.AWAY,
                         summary = "3-0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "vs. Conf.",
                         abbreviation = null,
                         type = RecordType.CONF,
@@ -149,12 +145,12 @@ object PreviewData {
                 )
             )
         ),
-        date = Instant.from(formatter.parse("2025-10-25T23:30:00Z")),
-        status = Status(
+        date = "2025-10-25T23:30:00Z",
+        status = StatusDto(
             clock = 0,
             displayClock = "0:00",
             period = 4,
-            type = StatusType(
+            type = StatusTypeDto(
                 completed = true,
                 description = "Final",
                 detail = "Final",
@@ -166,13 +162,13 @@ object PreviewData {
         )
     )
 
-    val sampleEndPeriodCompetition = Competition(
+    val sampleEndPeriodCompetitionDto = CompetitionDto(
         id = 401752763,
         competitors = listOf(
-            Competitor(
+            CompetitorDto(
                 id = 142,
                 homeAway = HomeAway.HOME,
-                team = Team(
+                team = TeamDto(
                     id = 142,
                     location = "Missouri",
                     name = "Tigers",
@@ -183,32 +179,32 @@ object PreviewData {
                 ),
                 score = 0,
                 linescores = listOf(
-                    Linescore(
+                    LinescoreDto(
                         value = 0,
                         displayValue = "0",
                         period = 1
                     )
                 ),
                 records = listOf(
-                    Record(
+                    RecordDto(
                         name = "overall",
                         abbreviation = "overall",
                         type = RecordType.OVERALL,
                         summary = "6-2"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Home",
                         abbreviation = "Home",
                         type = RecordType.HOME,
                         summary = "5-1"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Away",
                         abbreviation = "Away",
                         type = RecordType.AWAY,
                         summary = "1-1"
                     ),
-                    Record(
+                    RecordDto(
                         name = "vs. Conf.",
                         abbreviation = "CONF",
                         type = RecordType.CONF,
@@ -216,10 +212,10 @@ object PreviewData {
                     )
                 )
             ),
-            Competitor(
+            CompetitorDto(
                 id = 245,
                 homeAway = HomeAway.AWAY,
-                team = Team(
+                team = TeamDto(
                     id = 245,
                     location = "Texas A&M",
                     name = "Aggies",
@@ -230,32 +226,32 @@ object PreviewData {
                 ),
                 score = 7,
                 linescores = listOf(
-                    Linescore(
+                    LinescoreDto(
                         value = 7,
                         displayValue = "7",
                         period = 1
                     )
                 ),
                 records = listOf(
-                    Record(
+                    RecordDto(
                         name = "overall",
                         abbreviation = "overall",
                         type = RecordType.OVERALL,
                         summary = "8-0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Home",
                         abbreviation = "Home",
                         type = RecordType.HOME,
                         summary = "5-0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Away",
                         abbreviation = "Away",
                         type = RecordType.AWAY,
                         summary = "3-0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "vs. Conf.",
                         abbreviation = "CONF",
                         type = RecordType.CONF,
@@ -264,12 +260,12 @@ object PreviewData {
                 )
             )
         ),
-        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
-        status = Status(
+        date = "2025-11-08T20:30:00Z",
+        status = StatusDto(
             clock = 0,
             displayClock = "0:00",
             period = 1,
-            type = StatusType(
+            type = StatusTypeDto(
                 id = 22,
                 name = "STATUS_END_PERIOD",
                 state = "in",
@@ -281,13 +277,13 @@ object PreviewData {
         )
     )
 
-    val sampleInProgressCompetition = Competition(
+    val sampleInProgressCompetitionDto = CompetitionDto(
         id = 401752763,
         competitors = listOf(
-            Competitor(
+            CompetitorDto(
                 id = 142,
                 homeAway = HomeAway.HOME,
-                team = Team(
+                team = TeamDto(
                     id = 142,
                     location = "Missouri",
                     name = "Tigers",
@@ -298,37 +294,37 @@ object PreviewData {
                 ),
                 score = 0,
                 linescores = listOf(
-                    Linescore(
+                    LinescoreDto(
                         value = 0,
                         displayValue = "0",
                         period = 1
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 0,
                         displayValue = "0",
                         period = 2
                     )
                 ),
                 records = listOf(
-                    Record(
+                    RecordDto(
                         name = "overall",
                         abbreviation = "overall",
                         type = RecordType.OVERALL,
                         summary = "6-2"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Home",
                         abbreviation = "Home",
                         type = RecordType.HOME,
                         summary = "5-1"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Away",
                         abbreviation = "Away",
                         type = RecordType.AWAY,
                         summary = "1-1"
                     ),
-                    Record(
+                    RecordDto(
                         name = "vs. Conf.",
                         abbreviation = "CONF",
                         type = RecordType.CONF,
@@ -336,10 +332,10 @@ object PreviewData {
                     )
                 )
             ),
-            Competitor(
+            CompetitorDto(
                 id = 245,
                 homeAway = HomeAway.AWAY,
-                team = Team(
+                team = TeamDto(
                     id = 245,
                     location = "Texas A&M",
                     name = "Aggies",
@@ -350,37 +346,37 @@ object PreviewData {
                 ),
                 score = 7,
                 linescores = listOf(
-                    Linescore(
+                    LinescoreDto(
                         value = 7,
                         displayValue = "7",
                         period = 1
                     ),
-                    Linescore(
+                    LinescoreDto(
                         value = 0,
                         displayValue = "0",
                         period = 2
                     )
                 ),
                 records = listOf(
-                    Record(
+                    RecordDto(
                         name = "overall",
                         abbreviation = "overall",
                         type = RecordType.OVERALL,
                         summary = "8 - 0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Home",
                         abbreviation = "Home",
                         type = RecordType.HOME,
                         summary = "5 - 0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "Away",
                         abbreviation = "Away",
                         type = RecordType.AWAY,
                         summary = "3 - 0"
                     ),
-                    Record(
+                    RecordDto(
                         name = "vs.Conf.",
                         abbreviation = "CONF",
                         type = RecordType.CONF,
@@ -389,12 +385,12 @@ object PreviewData {
                 )
             )
         ),
-        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
-        status = Status(
+        date = "2025-11-08T20:30:00Z",
+        status = StatusDto(
             clock = 858,
             displayClock = "14:18",
             period = 2,
-            type = StatusType(
+            type = StatusTypeDto(
                 id = 2,
                 name = "STATUS_IN_PROGRESS",
                 state = "in",
@@ -406,209 +402,190 @@ object PreviewData {
         )
     )
 
-    val sampleScoreboard = Scoreboard(
+    val sampleScoreboard = ScoreboardDto(
         leagues = listOf(
-            League(
+            LeagueDto(
                 id = 23,
                 name = "NCAA - Football",
                 abbreviation = "NCAAF",
                 midsizeName = "NCAA Football",
                 slug = "college-football",
-                calendarStartDate = Instant.from(formatter.parse("2025-02-01T08:00Z")),
-                calendarEndDate = Instant.from(formatter.parse("2026-01-21T07:59Z")),
+                calendarStartDate = "2025-02-01T08:00Z",
+                calendarEndDate = "2026-01-21T07:59Z",
                 calendar = listOf(
-                    ListCalendar(
+                    ListCalendarDto(
                         label = "Regular Season",
                         value = 2,
-                        startDate = Instant.from(formatter.parse("2025-08-23T07:00:00Z")),
-                        endDate = Instant.from(formatter.parse("2025-12-14T07:59:00Z")),
+                        startDate = "2025-08-23T07:00:00Z",
+                        endDate = "2025-12-14T07:59:00Z",
                         entries = listOf(
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 1",
                                 alternateLabel = "Week 1",
                                 detail = "Aug 23-Sep 1",
                                 value = 1,
-                                startDate = Instant.from(formatter.parse("2025-08-23T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-09-02T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-08-23T07:00:00Z",
+                                endDate = "2025-09-02T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 2",
                                 alternateLabel = "Week 2",
                                 detail = "Sep 2-7",
                                 value = 2,
-                                startDate = Instant.from(formatter.parse("2025-09-02T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-09-08T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-09-02T07:00:00Z",
+                                endDate = "2025-09-08T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 3",
                                 alternateLabel = "Week 3",
                                 detail = "Sep 8-14",
                                 value = 3,
-                                startDate = Instant.from(formatter.parse("2025-09-08T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-09-15T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-09-08T07:00:00Z",
+                                endDate = "2025-09-15T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 4",
                                 alternateLabel = "Week 4",
                                 detail = "Sep 15-21",
                                 value = 4,
-                                startDate = Instant.from(formatter.parse("2025-09-15T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-09-22T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-09-15T07:00:00Z",
+                                endDate = "2025-09-22T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 5",
                                 alternateLabel = "Week 5",
                                 detail = "Sep 22-28",
                                 value = 5,
-                                startDate = Instant.from(formatter.parse("2025-09-22T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-09-29T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-09-22T07:00:00Z",
+                                endDate = "2025-09-29T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 6",
                                 alternateLabel = "Week 6",
                                 detail = "Sep 29-Oct 5",
                                 value = 6,
-                                startDate = Instant.from(formatter.parse("2025-09-29T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-10-06T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-09-29T07:00:00Z",
+                                endDate = "2025-10-06T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 7",
                                 alternateLabel = "Week 7",
                                 detail = "Oct 6-12",
                                 value = 7,
-                                startDate = Instant.from(formatter.parse("2025-10-06T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-10-13T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-10-06T07:00:00Z",
+                                endDate = "2025-10-13T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 8",
                                 alternateLabel = "Week 8",
                                 detail = "Oct 13-19",
                                 value = 8,
-                                startDate = Instant.from(formatter.parse("2025-10-13T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-10-20T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-10-13T07:00:00Z",
+                                endDate = "2025-10-20T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 9",
                                 alternateLabel = "Week 9",
                                 detail = "Oct 20-26",
                                 value = 9,
-                                startDate = Instant.from(formatter.parse("2025-10-20T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-10-27T06:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-10-20T07:00:00Z",
+                                endDate = "2025-10-27T06:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 10",
                                 alternateLabel = "Week 10",
                                 detail = "Oct 27-Nov 2",
                                 value = 10,
-                                startDate = Instant.from(formatter.parse("2025-10-27T07:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-11-03T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-10-27T07:00:00Z",
+                                endDate = "2025-11-03T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 11",
                                 alternateLabel = "Week 11",
                                 detail = "Nov 3-9",
                                 value = 11,
-                                startDate = Instant.from(formatter.parse("2025-11-03T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-11-10T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-11-03T08:00:00Z",
+                                endDate = "2025-11-10T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 12",
                                 alternateLabel = "Week 12",
                                 detail = "Nov 10-16",
                                 value = 12,
-                                startDate = Instant.from(formatter.parse("2025-11-10T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-11-17T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-11-10T08:00:00Z",
+                                endDate = "2025-11-17T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 13",
                                 alternateLabel = "Week 13",
                                 detail = "Nov 17-23",
                                 value = 13,
-                                startDate = Instant.from(formatter.parse("2025-11-17T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-11-24T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-11-17T08:00:00Z",
+                                endDate = "2025-11-24T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 14",
                                 alternateLabel = "Week 14",
                                 detail = "Nov 24-30",
                                 value = 14,
-                                startDate = Instant.from(formatter.parse("2025-11-24T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-12-01T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-11-24T08:00:00Z",
+                                endDate = "2025-12-01T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 15",
                                 alternateLabel = "Week 15",
                                 detail = "Dec 1-7",
                                 value = 15,
-                                startDate = Instant.from(formatter.parse("2025-12-01T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2025-12-08T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-12-01T08:00:00Z",
+                                endDate = "2025-12-08T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Week 16",
                                 alternateLabel = "Week 16",
                                 detail = "Dec 8-13",
                                 value = 16,
-                                startDate = Instant.from(formatter.parse("2025-12-08T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2026-12-14T07:59:00Z")),
-                                calendarValue = 2
+                                startDate = "2025-12-08T08:00:00Z",
+                                endDate = "2026-12-14T07:59:00Z"
                             )
                         )
                     ),
-                    ListCalendar(
+                    ListCalendarDto(
                         label = "Postseason",
                         value = 3,
-                        startDate = Instant.from(formatter.parse("2025-12-13T08:00:00Z")),
-                        endDate = Instant.from(formatter.parse("2026-01-21T07:59:00Z")),
+                        startDate = "2025-12-13T08:00:00Z",
+                        endDate = "2026-01-21T07:59:00Z",
                         entries = listOf(
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "Bowls",
                                 alternateLabel = "Bowls",
                                 detail = "Dec 13-Jan 20",
                                 value = 1,
-                                startDate = Instant.from(formatter.parse("2025-12-13T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2026-01-21T07:59:00Z")),
-                                calendarValue = 3
+                                startDate = "2025-12-13T08:00:00Z",
+                                endDate = "2026-01-21T07:59:00Z"
                             ),
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "CFP",
                                 alternateLabel = "CFP",
                                 detail = "Dec 19-Jan 20",
                                 value = 999,
-                                startDate = Instant.from(formatter.parse("2025-12-19T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2026-01-20T07:59:00Z")),
-                                calendarValue = 3
+                                startDate = "2025-12-19T08:00:00Z",
+                                endDate = "2026-01-20T07:59:00Z"
                             )
                         )
                     ),
-                    ListCalendar(
+                    ListCalendarDto(
                         label = "Off Season",
                         value = 4,
-                        startDate = Instant.from(formatter.parse("2026-01-21T08:00:00Z")),
-                        endDate = Instant.from(formatter.parse("2026-02-01T07:59:00Z")),
+                        startDate = "2026-01-21T08:00:00Z",
+                        endDate = "2026-02-01T07:59:00Z",
                         entries = listOf(
-                            ListCalendarEntry(
+                            ListCalendarEntryDto(
                                 label = "All-Star",
                                 alternateLabel = "All-Star",
                                 detail = "Jan 21-31",
                                 value = 1,
-                                startDate = Instant.from(formatter.parse("2026-01-21T08:00:00Z")),
-                                endDate = Instant.from(formatter.parse("2026-02-01T07:59:00Z")),
-                                calendarValue = 4
+                                startDate = "2026-01-21T08:00:00Z",
+                                endDate = "2026-02-01T07:59:00Z"
                             )
                         )
                     )
@@ -620,18 +597,18 @@ object PreviewData {
             year = 2025
         ),
         events = listOf(
-            Event(
+            EventDto(
                 id = 401752763,
                 name = "Texas A&M Aggies at Missouri Tigers",
                 shortName = "TA&M @ MIZ",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752763,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 142,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 142,
                                     location = "Missouri",
                                     name = "Tigers",
@@ -642,37 +619,37 @@ object PreviewData {
                                 ),
                                 score = 0,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "6-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "5-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "1-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -680,10 +657,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 245,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 245,
                                     location = "Texas A&M",
                                     name = "Aggies",
@@ -694,37 +671,37 @@ object PreviewData {
                                 ),
                                 score = 7,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "8-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "5-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "3-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -733,12 +710,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
-                        status = Status(
+                        date = "2025-11-08T20:30:00Z",
+                        status = StatusDto(
                             clock = 110,
                             displayClock = "1:50",
                             period = 2,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 2,
                                 name = "STATUS_IN_PROGRESS",
                                 state = "in",
@@ -751,18 +728,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752898,
                 name = "Oregon Ducks at Iowa Hawkeyes",
                 shortName = "ORE @ IOWA",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752898,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 2294,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2294,
                                     location = "Iowa",
                                     name = "Hawkeyes",
@@ -773,37 +750,37 @@ object PreviewData {
                                 ),
                                 score = 7,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "6-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -811,10 +788,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 2483,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2483,
                                     location = "Oregon",
                                     name = "Ducks",
@@ -825,37 +802,37 @@ object PreviewData {
                                 ),
                                 score = 9,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 2,
                                         displayValue = "2",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "7-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "3-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -864,12 +841,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
-                        status = Status(
+                        date = "2025-11-08T20:30:00Z",
+                        status = StatusDto(
                             clock = 92,
                             displayClock = "1:32",
                             period = 2,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 2,
                                 name = "STATUS_IN_PROGRESS",
                                 state = "in",
@@ -882,18 +859,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401754587,
                 name = "Syracuse Orange at Miami Hurricanes",
                 shortName = "SYR @ MIA",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401754587,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 2390,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2390,
                                     location = "Miami",
                                     name = "Hurricanes",
@@ -904,37 +881,37 @@ object PreviewData {
                                 ),
                                 score = 14,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 14,
                                         displayValue = "14",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "6-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "5-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "1-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -942,10 +919,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 183,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 183,
                                     location = "Syracuse",
                                     name = "Orange",
@@ -956,37 +933,37 @@ object PreviewData {
                                 ),
                                 score = 0,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "3-6"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "2-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "1-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -995,12 +972,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T20:30:00Z")),
-                        status = Status(
+                        date = "2025-11-08T20:30:00Z",
+                        status = StatusDto(
                             clock = 35,
                             displayClock = "0:35",
                             period = 2,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 2,
                                 name = "STATUS_IN_PROGRESS",
                                 state = "in",
@@ -1013,18 +990,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752764,
                 name = "Auburn Tigers at Vanderbilt Commodores",
                 shortName = "AUB @ VAN",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752764,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 238,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 238,
                                     location = "Vanderbilt",
                                     name = "Commodores",
@@ -1035,37 +1012,37 @@ object PreviewData {
                                 ),
                                 score = 3,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "7-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "5-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -1073,10 +1050,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 2,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2,
                                     location = "Auburn",
                                     name = "Tigers",
@@ -1087,37 +1064,37 @@ object PreviewData {
                                 ),
                                 score = 14,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 2
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "4-5"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "2-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -1126,12 +1103,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T21:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T21:00:00Z",
+                        status = StatusDto(
                             clock = 330,
                             displayClock = "5:30",
                             period = 2,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 2,
                                 name = "STATUS_IN_PROGRESS",
                                 state = "in",
@@ -1144,18 +1121,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752899,
                 name = "Washington Huskies at Wisconsin Badgers",
                 shortName = "WASH @ WIS",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752899,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 275,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 275,
                                     location = "Wisconsin",
                                     name = "Badgers",
@@ -1166,32 +1143,32 @@ object PreviewData {
                                 ),
                                 score = 0,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "2-6"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "2-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "0-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -1199,10 +1176,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 264,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 264,
                                     location = "Washington",
                                     name = "Huskies",
@@ -1213,32 +1190,32 @@ object PreviewData {
                                 ),
                                 score = 0,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "6-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -1247,12 +1224,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T21:30:00Z")),
-                        status = Status(
+                        date = "2025-11-08T21:30:00Z",
+                        status = StatusDto(
                             clock = 493,
                             displayClock = "8:13",
                             period = 1,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 2,
                                 name = "STATUS_IN_PROGRESS",
                                 state = "in",
@@ -1265,18 +1242,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752897,
                 name = "Ohio State Buckeyes at Purdue Boilermakers",
                 shortName = "OSU @ PUR",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752897,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 2509,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2509,
                                     location = "Purdue",
                                     name = "Boilermakers",
@@ -1287,47 +1264,47 @@ object PreviewData {
                                 ),
                                 score = 10,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "2-8"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "2-4"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "0-4"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1335,10 +1312,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 194,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 194,
                                     location = "Ohio State",
                                     name = "Buckeyes",
@@ -1349,47 +1326,47 @@ object PreviewData {
                                 ),
                                 score = 34,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 24,
                                         displayValue = "24",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 10,
                                         displayValue = "10",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "9-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "5-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "4-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1398,12 +1375,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T18:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T18:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 4,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 3,
                                 name = "STATUS_FINAL",
                                 state = "post",
@@ -1416,18 +1393,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752893,
                 name = "Indiana Hoosiers at Penn State Nittany Lions",
                 shortName = "IU @ PSU",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752893,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 213,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 213,
                                     location = "Penn State",
                                     name = "Nittany Lions",
@@ -1438,47 +1415,47 @@ object PreviewData {
                                 ),
                                 score = 24,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 14,
                                         displayValue = "14",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "3-6"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "3-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "0-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1486,10 +1463,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 84,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 84,
                                     location = "Indiana",
                                     name = "Hoosiers",
@@ -1500,47 +1477,47 @@ object PreviewData {
                                 ),
                                 score = 27,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 10,
                                         displayValue = "10",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "10-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "6-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "4-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1549,12 +1526,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T17:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T17:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 4,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 3,
                                 name = "STATUS_FINAL",
                                 state = "post",
@@ -1567,18 +1544,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752762,
                 name = "Georgia Bulldogs at Mississippi State Bulldogs",
                 shortName = "UGA @ MSST",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752762,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 344,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 344,
                                     location = "Mississippi State",
                                     name = "Bulldogs",
@@ -1589,47 +1566,47 @@ object PreviewData {
                                 ),
                                 score = 21,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "5-5"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "3-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "2-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1637,10 +1614,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 61,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 61,
                                     location = "Georgia",
                                     name = "Bulldogs",
@@ -1651,47 +1628,47 @@ object PreviewData {
                                 ),
                                 score = 41,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 21,
                                         displayValue = "21",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 14,
                                         displayValue = "14",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "8-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "3-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1700,12 +1677,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T17:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T17:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 4,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 3,
                                 name = "STATUS_FINAL",
                                 state = "post",
@@ -1718,18 +1695,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752761,
                 name = "The Citadel Bulldogs at Ole Miss Rebels",
                 shortName = "CIT @ MISS",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752761,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 145,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 145,
                                     location = "Ole Miss",
                                     name = "Rebels",
@@ -1740,47 +1717,47 @@ object PreviewData {
                                 ),
                                 score = 49,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 21,
                                         displayValue = "21",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 14,
                                         displayValue = "14",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "9-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "7-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "2-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1788,10 +1765,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 2643,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2643,
                                     location = "The Citadel",
                                     name = "Bulldogs",
@@ -1802,47 +1779,47 @@ object PreviewData {
                                 ),
                                 score = 0,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "4-6"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "2-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "2-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1851,12 +1828,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T18:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T18:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 4,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 3,
                                 name = "STATUS_FINAL",
                                 state = "post",
@@ -1869,18 +1846,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401756945,
                 name = "BYU Cougars at Texas Tech Red Raiders",
                 shortName = "BYU @ TTU",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401756945,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 2641,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2641,
                                     location = "Texas Tech",
                                     name = "Red Raiders",
@@ -1891,47 +1868,47 @@ object PreviewData {
                                 ),
                                 score = 29,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 10,
                                         displayValue = "10",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 6,
                                         displayValue = "6",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 10,
                                         displayValue = "10",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "9-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "6-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "3-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -1939,10 +1916,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 252,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 252,
                                     location = "BYU",
                                     name = "Cougars",
@@ -1953,47 +1930,47 @@ object PreviewData {
                                 ),
                                 score = 7,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "8-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "4-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -2002,12 +1979,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T17:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T17:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 4,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 3,
                                 name = "STATUS_FINAL",
                                 state = "post",
@@ -2020,18 +1997,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401754589,
                 name = "Wake Forest Demon Deacons at Virginia Cavaliers",
                 shortName = "WAKE @ UVA",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401754589,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 258,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 258,
                                     location = "Virginia",
                                     name = "Cavaliers",
@@ -2043,25 +2020,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "8-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "5-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "3-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2069,10 +2046,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 154,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 154,
                                     location = "Wake Forest",
                                     name = "Demon Deacons",
@@ -2084,25 +2061,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "5-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "3-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2111,12 +2088,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-09T00:00:00Z")),
-                        status = Status(
+                        date = "2025-11-09T00:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 0,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 1,
                                 name = "STATUS_SCHEDULED",
                                 state = "pre",
@@ -2129,18 +2106,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401754585,
                 name = "California Golden Bears at Louisville Cardinals",
                 shortName = "CAL @ LOU",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401754585,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 97,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 97,
                                     location = "Louisville",
                                     name = "Cardinals",
@@ -2152,25 +2129,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "7-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "3-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2178,10 +2155,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 25,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 25,
                                     location = "California",
                                     name = "Golden Bears",
@@ -2193,25 +2170,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "5-4"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "3-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2220,12 +2197,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-09T00:00:00Z")),
-                        status = Status(
+                        date = "2025-11-09T00:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 0,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 1,
                                 name = "STATUS_SCHEDULED",
                                 state = "pre",
@@ -2238,18 +2215,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752759,
                 name = "LSU Tigers at Alabama Crimson Tide",
                 shortName = "LSU @ ALA",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752759,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 333,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 333,
                                     location = "Alabama",
                                     name = "Crimson Tide",
@@ -2261,25 +2238,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "7-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "3-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2287,10 +2264,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 99,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 99,
                                     location = "LSU",
                                     name = "Tigers",
@@ -2302,25 +2279,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "5-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "1-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2329,12 +2306,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-09T00:30:00Z")),
-                        status = Status(
+                        date = "2025-11-09T00:30:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 0,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 1,
                                 name = "STATUS_SCHEDULED",
                                 state = "pre",
@@ -2347,18 +2324,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401757166,
                 name = "Navy Midshipmen at Notre Dame Fighting Irish",
                 shortName = "NAVY @ ND",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401757166,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 87,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 87,
                                     location = "Notre Dame",
                                     name = "Fighting Irish",
@@ -2370,25 +2347,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "6-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2396,10 +2373,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 2426,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 2426,
                                     location = "Navy",
                                     name = "Midshipmen",
@@ -2411,25 +2388,25 @@ object PreviewData {
                                 score = 0,
                                 linescores = listOf(),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "overall",
                                         type = RecordType.OVERALL,
                                         summary = "7-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = "Home",
                                         type = RecordType.HOME,
                                         summary = "5-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Away",
                                         abbreviation = "Away",
                                         type = RecordType.AWAY,
                                         summary = "2-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = "CONF",
                                         type = RecordType.CONF,
@@ -2438,12 +2415,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-09T00:30:00Z")),
-                        status = Status(
+                        date = "2025-11-09T00:30:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 0,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 1,
                                 name = "STATUS_SCHEDULED",
                                 state = "pre",
@@ -2456,18 +2433,18 @@ object PreviewData {
                     )
                 )
             ),
-            Event(
+            EventDto(
                 id = 401752896,
                 name = "Northwestern Wildcats at USC Trojans",
                 shortName = "NU @ USC",
                 competitions = listOf(
-                    Competition(
+                    CompetitionDto(
                         id = 401752896,
                         competitors = listOf(
-                            Competitor(
+                            CompetitorDto(
                                 id = 30,
                                 homeAway = HomeAway.HOME,
-                                team = Team(
+                                team = TeamDto(
                                     id = 30,
                                     location = "USC",
                                     name = "Trojans",
@@ -2478,47 +2455,47 @@ object PreviewData {
                                 ),
                                 score = 38,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 14,
                                         displayValue = "14",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 10,
                                         displayValue = "10",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "7-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "5-0"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "2-2"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -2526,10 +2503,10 @@ object PreviewData {
                                     )
                                 )
                             ),
-                            Competitor(
+                            CompetitorDto(
                                 id = 77,
                                 homeAway = HomeAway.AWAY,
-                                team = Team(
+                                team = TeamDto(
                                     id = 77,
                                     location = "Northwestern",
                                     name = "Wildcats",
@@ -2540,47 +2517,47 @@ object PreviewData {
                                 ),
                                 score = 17,
                                 linescores = listOf(
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 1
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
                                         period = 2
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
                                         period = 3
                                     ),
-                                    Linescore(
+                                    LinescoreDto(
                                         value = 0,
                                         displayValue = "0",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
-                                    Record(
+                                    RecordDto(
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
                                         summary = "5-4"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
                                         summary = "4-1"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
                                         summary = "1-3"
                                     ),
-                                    Record(
+                                    RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
@@ -2589,12 +2566,12 @@ object PreviewData {
                                 )
                             )
                         ),
-                        date = Instant.from(formatter.parse("2025-11-08T02:00:00Z")),
-                        status = Status(
+                        date = "2025-11-08T02:00:00Z",
+                        status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
                             period = 4,
-                            type = StatusType(
+                            type = StatusTypeDto(
                                 id = 3,
                                 name = "STATUS_FINAL",
                                 state = "post",

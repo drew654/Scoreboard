@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.drew.scoreboard.presentation.preview.PreviewData.sampleScoreboard
+import com.drew654.scoreboard.data.remote.dto.toCompetition
+import com.drew654.scoreboard.data.remote.dto.toCompetitor
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
@@ -101,9 +103,9 @@ private fun HeaderPreview() {
             val homeTeam = competition?.competitors?.find { it.homeAway == HomeAway.HOME }!!
             val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
             Header(
-                competition = competition,
-                awayTeam = awayTeam,
-                homeTeam = homeTeam
+                competition = competition.toCompetition(),
+                awayTeam = awayTeam.toCompetitor(),
+                homeTeam = homeTeam.toCompetitor()
             )
         }
     }
