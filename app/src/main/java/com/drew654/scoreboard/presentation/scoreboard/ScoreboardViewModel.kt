@@ -83,7 +83,7 @@ class ScoreboardViewModel @Inject constructor(
                     val league = scoreboard?.leagues?.find { it.id == 23 }!!
                     val calendarEntries = league.calendar.flatMap { it.entries }
                         .filter { entry ->
-                            entry.startDate >= league.calendarStartDate && entry.endDate <= league.calendarEndDate
+                            entry.startDate >= league.calendarStartDate && entry.startDate <= league.calendarEndDate
                         }
 
                     _state.value = ScoreboardState(
