@@ -21,12 +21,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.drew.scoreboard.presentation.preview.PreviewData.sampleScoreboard
 import com.drew654.scoreboard.data.remote.dto.toCompetition
 import com.drew654.scoreboard.data.remote.dto.toCompetitor
 import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
+import com.drew654.scoreboard.presentation.preview.MockData.sampleScoreboard
 import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
 
 @Composable

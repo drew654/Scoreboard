@@ -1,7 +1,9 @@
 package com.drew654.scoreboard.di
 
+import com.drew654.scoreboard.BuildConfig
 import com.drew654.scoreboard.common.Constants
 import com.drew654.scoreboard.data.remote.EspnApi
+import com.drew654.scoreboard.data.repository.MockScoreboardRepositoryImpl
 import com.drew654.scoreboard.data.repository.ScoreboardRepositoryImpl
 import com.drew654.scoreboard.domain.repository.ScoreboardRepository
 import dagger.Module
@@ -43,6 +45,10 @@ object AppModule {
     @Provides
     @Singleton
     fun provideScoreboardRepository(api: EspnApi): ScoreboardRepository {
-        return ScoreboardRepositoryImpl(api)
+        return if (BuildConfig.USE_MOCK_DATA) {
+            MockScoreboardRepositoryImpl()
+        } else {
+            ScoreboardRepositoryImpl(api)
+        }
     }
 }

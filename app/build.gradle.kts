@@ -28,8 +28,25 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("Boolean", "USE_MOCK_DATA", "false")
+        }
+        debug {
+            buildConfigField("Boolean", "USE_MOCK_DATA", "false")
+        }
+        create("mock") {
+            initWith(getByName("debug"))
+            buildConfigField("Boolean", "USE_MOCK_DATA", "true")
+            applicationIdSuffix = ".mock"
+            versionNameSuffix = "-mock"
         }
     }
+
+    sourceSets {
+        getByName("mock") {
+            java.srcDir("src/debug/java")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -39,6 +56,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -67,4 +85,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    "mockImplementation"(libs.androidx.ui.tooling)
+    "mockImplementation"(libs.androidx.ui.test.manifest)
 }

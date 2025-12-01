@@ -1,4 +1,4 @@
-package com.drew.scoreboard.presentation.preview
+package com.drew654.scoreboard.presentation.preview
 
 import com.drew654.scoreboard.data.remote.dto.CompetitionDto
 import com.drew654.scoreboard.data.remote.dto.CompetitorDto
@@ -16,7 +16,7 @@ import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
 import com.drew654.scoreboard.domain.model.scoreboard.Season
 
-object PreviewData {
+object MockData {
     val sampleFinalCompetitionDto = CompetitionDto(
         id = 401752748,
         competitors = listOf(
