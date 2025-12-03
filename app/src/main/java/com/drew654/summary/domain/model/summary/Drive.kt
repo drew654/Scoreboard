@@ -6,6 +6,7 @@ data class Drive(
     val id: String,
     val isScore: Boolean,
     val offensivePlays: Int,
+    val plays: List<Play>,
     val result: String,
     val shortDisplayResult: String,
     val yards: Int

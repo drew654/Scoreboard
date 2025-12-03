@@ -8,6 +8,7 @@ data class DriveDto(
     val id: String,
     val isScore: Boolean,
     val offensivePlays: Int,
+    val plays: List<PlayDto>,
     val result: String,
     val shortDisplayResult: String,
     val yards: Int
@@ -20,6 +21,7 @@ fun DriveDto.toDrive(): Drive {
         id = id,
         isScore = isScore,
         offensivePlays = offensivePlays,
+        plays = plays.map { it -> it.toPlay() },
         result = result,
         shortDisplayResult = shortDisplayResult,
         yards = yards
