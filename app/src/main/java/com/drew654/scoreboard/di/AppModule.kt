@@ -6,6 +6,9 @@ import com.drew654.scoreboard.data.remote.EspnApi
 import com.drew654.scoreboard.data.repository.MockScoreboardRepositoryImpl
 import com.drew654.scoreboard.data.repository.ScoreboardRepositoryImpl
 import com.drew654.scoreboard.domain.repository.ScoreboardRepository
+import com.drew654.summary.data.remote.SummaryApi
+import com.drew654.summary.data.repository.SummaryRepositoryImpl
+import com.drew654.summary.domain.repository.SummaryRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,5 +53,22 @@ object AppModule {
         } else {
             ScoreboardRepositoryImpl(api)
         }
+    }
+
+    @Provides
+    @Singleton
+    fun provideSummaryApi(okHttpClient: OkHttpClient): SummaryApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(SummaryApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSummaryRepository(api: SummaryApi): SummaryRepository {
+        return SummaryRepositoryImpl(api)
     }
 }

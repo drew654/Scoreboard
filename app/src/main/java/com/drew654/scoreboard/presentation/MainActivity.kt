@@ -18,6 +18,7 @@ import com.drew654.scoreboard.presentation.competition.CompetitionScreen
 import com.drew654.scoreboard.presentation.scoreboard.ScoreboardScreen
 import com.drew654.scoreboard.presentation.scoreboard.ScoreboardViewModel
 import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
+import com.drew654.summary.presentation.summary.SummaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,8 +63,10 @@ class MainActivity : ComponentActivity() {
                                     navController.getBackStackEntry(ScoreboardFeature.ROUTE)
                                 }
                                 val viewModel = hiltViewModel<ScoreboardViewModel>(parentEntry)
+                                val summaryViewModel = hiltViewModel<SummaryViewModel>()
                                 CompetitionScreen(
                                     viewModel = viewModel,
+                                    summaryViewModel = summaryViewModel,
                                     competitionId = backStackEntry.arguments?.getString("competitionId")!!
                                 )
                             }

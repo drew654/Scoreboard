@@ -10,10 +10,12 @@ import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.presentation.competition.components.BoxScore
 import com.drew654.scoreboard.presentation.competition.components.Header
 import com.drew654.scoreboard.presentation.scoreboard.ScoreboardViewModel
+import com.drew654.summary.presentation.summary.SummaryViewModel
 
 @Composable
 fun CompetitionScreen(
     viewModel: ScoreboardViewModel,
+    summaryViewModel: SummaryViewModel,
     competitionId: String
 ) {
     val state = viewModel.state.value
