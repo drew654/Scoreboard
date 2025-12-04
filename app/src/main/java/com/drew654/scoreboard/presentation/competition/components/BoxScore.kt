@@ -76,9 +76,9 @@ fun BoxScore(
                     .fillMaxWidth()
                     .padding(vertical = 4.dp)
             )
-            TeamRow(team = homeTeam)
-            Spacer(Modifier.height(8.dp))
             TeamRow(team = awayTeam)
+            Spacer(Modifier.height(8.dp))
+            TeamRow(team = homeTeam)
         }
     }
 }

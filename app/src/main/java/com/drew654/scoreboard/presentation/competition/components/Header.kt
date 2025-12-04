@@ -51,14 +51,14 @@ fun Header(
             verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
-                model = homeTeam.team.logo,
-                contentDescription = "${homeTeam.team.logo} logo",
+                model = awayTeam.team.logo,
+                contentDescription = "${awayTeam.team.logo} logo",
                 modifier = Modifier
                     .size(48.dp)
             )
             Spacer(Modifier.width(24.dp))
             Text(
-                text = homeTeam.score.toString(),
+                text = awayTeam.score.toString(),
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -70,14 +70,14 @@ fun Header(
             }
             Spacer(Modifier.weight(1f))
             Text(
-                text = awayTeam.score.toString(),
+                text = homeTeam.score.toString(),
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(Modifier.width(24.dp))
             AsyncImage(
-                model = awayTeam.team.logo,
-                contentDescription = "${awayTeam.team.logo} logo",
+                model = homeTeam.team.logo,
+                contentDescription = "${homeTeam.team.logo} logo",
                 modifier = Modifier
                     .size(48.dp)
             )
