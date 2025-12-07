@@ -22,6 +22,10 @@ fun CompetitionScreen(
     val competition = state.competitions.find { it.id == competitionId.toInt() }!!
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }!!
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
+    val shortDetail = competition.status.type.shortDetail
+    val currentDrive = summaryViewModel.state.value.summary?.drives?.current
+    val shortDownDistanceText = currentDrive?.plays?.last()?.end?.shortDownDistanceText
+    val possessionText = currentDrive?.plays?.last()?.end?.possessionText
 
     Box(
         modifier = Modifier
@@ -32,7 +36,13 @@ fun CompetitionScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Header(competition = competition, homeTeam = homeTeam, awayTeam = awayTeam)
+            Header(
+                homeTeam = homeTeam,
+                awayTeam = awayTeam,
+                shortDetail = shortDetail,
+                shortDownDistanceText = shortDownDistanceText,
+                possessionText = possessionText
+            )
             BoxScore(homeTeam = homeTeam, awayTeam = awayTeam)
         }
     }

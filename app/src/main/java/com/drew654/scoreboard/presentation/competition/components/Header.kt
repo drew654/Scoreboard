@@ -21,9 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.drew654.scoreboard.data.remote.dto.toCompetition
 import com.drew654.scoreboard.data.remote.dto.toCompetitor
-import com.drew654.scoreboard.domain.model.scoreboard.Competition
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.presentation.preview.MockData.sampleScoreboard
@@ -31,9 +29,11 @@ import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
 
 @Composable
 fun Header(
-    competition: Competition,
     homeTeam: Competitor,
-    awayTeam: Competitor
+    awayTeam: Competitor,
+    shortDetail: String,
+    shortDownDistanceText: String?,
+    possessionText: String?
 ) {
     Card(
         modifier = Modifier
@@ -63,10 +63,26 @@ fun Header(
                 fontWeight = FontWeight.Bold
             )
             Spacer(Modifier.weight(1f))
-            Column {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            ) {
                 Text(
-                    text = competition.status.type.shortDetail
+                    text = shortDetail,
+                    fontWeight = FontWeight.Bold
                 )
+                shortDownDistanceText?.let {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                }
+                possessionText?.let {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                }
             }
             Spacer(Modifier.weight(1f))
             Text(
@@ -103,9 +119,11 @@ private fun HeaderPreview() {
             val homeTeam = competition?.competitors?.find { it.homeAway == HomeAway.HOME }!!
             val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
             Header(
-                competition = competition.toCompetition(),
                 awayTeam = awayTeam.toCompetitor(),
-                homeTeam = homeTeam.toCompetitor()
+                homeTeam = homeTeam.toCompetitor(),
+                shortDetail = competition.status.type.shortDetail,
+                shortDownDistanceText = "4th & 6",
+                possessionText = "TA&M 44"
             )
         }
     }

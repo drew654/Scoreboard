@@ -4,13 +4,13 @@ import com.drew654.summary.domain.model.summary.Drive
 
 data class DriveDto(
     val description: String,
-    val displayResult: String,
+    val displayResult: String?,
     val id: String,
     val isScore: Boolean,
     val offensivePlays: Int,
     val plays: List<PlayDto>,
-    val result: String,
-    val shortDisplayResult: String,
+    val result: String?,
+    val shortDisplayResult: String?,
     val yards: Int
 )
 
