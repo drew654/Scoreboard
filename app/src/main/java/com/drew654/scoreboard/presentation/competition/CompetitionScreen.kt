@@ -24,8 +24,10 @@ fun CompetitionScreen(
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
     val shortDetail = competition.status.type.shortDetail
     val currentDrive = summaryViewModel.state.value.summary?.drives?.current
-    val shortDownDistanceText = currentDrive?.plays?.last()?.end?.shortDownDistanceText
-    val possessionText = currentDrive?.plays?.last()?.end?.possessionText
+    val shortDownDistanceText =
+        if (competition.status.type.name == "STATUS_HALFTIME") null else currentDrive?.plays?.last()?.end?.shortDownDistanceText
+    val possessionText =
+        if (competition.status.type.name == "STATUS_HALFTIME") null else currentDrive?.plays?.last()?.end?.possessionText
 
     Box(
         modifier = Modifier
