@@ -2,7 +2,7 @@ package com.drew654.scoreboard.data.repository
 
 import com.drew654.scoreboard.data.remote.dto.ScoreboardDto
 import com.drew654.scoreboard.domain.repository.ScoreboardRepository
-import com.drew654.scoreboard.presentation.preview.MockData.sampleScoreboard
+import com.drew654.scoreboard.presentation.preview.MockData
 import javax.inject.Inject
 
 class MockScoreboardRepositoryImpl @Inject constructor() : ScoreboardRepository {
@@ -12,6 +12,6 @@ class MockScoreboardRepositoryImpl @Inject constructor() : ScoreboardRepository 
         week: Int?,
         seasonType: Int?
     ): ScoreboardDto {
-        return sampleScoreboard
+        return MockData.sampleScoreboardDto
     }
 }

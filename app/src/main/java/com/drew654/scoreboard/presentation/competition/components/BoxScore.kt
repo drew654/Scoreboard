@@ -138,32 +138,12 @@ private fun TeamRow(team: Competitor) {
 )
 @Composable
 private fun BoxScorePreview1() {
+    val competition = MockData.sampleScoreboardDto.events[0].competitions[0]
     ScoreboardTheme {
         Surface {
             BoxScore(
-                homeTeam = MockData.sampleFinalCompetitionDto.competitors[0].toCompetitor(),
-                awayTeam = MockData.sampleFinalCompetitionDto.competitors[1].toCompetitor()
-            )
-        }
-    }
-}
-
-@Preview(
-    name = "Light Mode",
-    showBackground = true
-)
-@Preview(
-    name = "Dark Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true
-)
-@Composable
-private fun BoxScorePreview2() {
-    ScoreboardTheme {
-        Surface {
-            BoxScore(
-                homeTeam = MockData.sampleEndPeriodCompetitionDto.competitors[0].toCompetitor(),
-                awayTeam = MockData.sampleEndPeriodCompetitionDto.competitors[1].toCompetitor()
+                homeTeam = competition.competitors[0].toCompetitor(),
+                awayTeam = competition.competitors[1].toCompetitor()
             )
         }
     }

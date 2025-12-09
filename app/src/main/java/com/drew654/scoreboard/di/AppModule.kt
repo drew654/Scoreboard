@@ -51,7 +51,7 @@ object AppModule {
         return if (BuildConfig.USE_MOCK_DATA) {
             MockScoreboardRepositoryImpl()
         } else {
-            ScoreboardRepositoryImpl(api)
+            return ScoreboardRepositoryImpl(api)
         }
     }
 

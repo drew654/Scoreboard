@@ -31,11 +31,8 @@ fun CompetitionScreen(
     val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }!!
     val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
     val shortDetail = competition.status.type.shortDetail
-    val currentDrive = summaryViewModel.state.value.summary?.drives?.current
-    val shortDownDistanceText =
-        if (competition.status.type.name == "STATUS_HALFTIME") null else currentDrive?.plays?.last()?.end?.shortDownDistanceText
-    val possessionText =
-        if (competition.status.type.name == "STATUS_HALFTIME") null else currentDrive?.plays?.last()?.end?.possessionText
+    val shortDownDistanceText = competition.situation?.shortDownDistanceText
+    val possessionText = competition.situation?.possessionText
 
     if (pullToRefreshState.isRefreshing) {
         LaunchedEffect(true) {

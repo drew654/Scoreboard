@@ -24,7 +24,7 @@ import coil.compose.AsyncImage
 import com.drew654.scoreboard.data.remote.dto.toCompetitor
 import com.drew654.scoreboard.domain.model.scoreboard.Competitor
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
-import com.drew654.scoreboard.presentation.preview.MockData.sampleScoreboard
+import com.drew654.scoreboard.presentation.preview.MockData
 import com.drew654.scoreboard.presentation.ui.theme.ScoreboardTheme
 
 @Composable
@@ -114,9 +114,8 @@ fun Header(
 private fun HeaderPreview() {
     ScoreboardTheme {
         Surface {
-            val competition =
-                sampleScoreboard.events.find { it.id == 401752763 }!!.competitions.find { it.id == 401752763 }
-            val homeTeam = competition?.competitors?.find { it.homeAway == HomeAway.HOME }!!
+            val competition = MockData.sampleScoreboardDto.events[0].competitions[0]
+            val homeTeam = competition.competitors.find { it.homeAway == HomeAway.HOME }!!
             val awayTeam = competition.competitors.find { it.homeAway == HomeAway.AWAY }!!
             Header(
                 awayTeam = awayTeam.toCompetitor(),

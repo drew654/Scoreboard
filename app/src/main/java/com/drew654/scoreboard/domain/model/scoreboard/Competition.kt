@@ -9,6 +9,7 @@ data class Competition(
     val id: Int,
     val competitors: List<Competitor>,
     val date: Instant,
+    val situation: Situation?,
     val status: Status
 )
 

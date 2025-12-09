@@ -15,394 +15,13 @@ import com.drew654.scoreboard.data.remote.dto.TeamDto
 import com.drew654.scoreboard.domain.model.scoreboard.HomeAway
 import com.drew654.scoreboard.domain.model.scoreboard.RecordType
 import com.drew654.scoreboard.domain.model.scoreboard.Season
+import com.drew654.summary.data.remote.dto.EndDto
+import com.drew654.summary.data.remote.dto.LastPlayDto
+import com.drew654.summary.data.remote.dto.SituationDto
+import com.drew654.summary.data.remote.dto.StartDto
 
 object MockData {
-    val sampleFinalCompetitionDto = CompetitionDto(
-        id = 401752748,
-        competitors = listOf(
-            CompetitorDto(
-                id = 99,
-                homeAway = HomeAway.HOME,
-                team = TeamDto(
-                    abbreviation = "LSU",
-                    displayName = "LSU Tigers",
-                    id = 99,
-                    location = "LSU",
-                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png",
-                    name = "Tigers",
-                    shortDisplayName = "LSU"
-                ),
-                score = 25,
-                linescores = listOf(
-                    LinescoreDto(
-                        value = 7,
-                        displayValue = "7",
-                        period = 1
-                    ),
-                    LinescoreDto(
-                        value = 11,
-                        displayValue = "11",
-                        period = 2
-                    ),
-                    LinescoreDto(
-                        value = 0,
-                        displayValue = "0",
-                        period = 3
-                    ),
-                    LinescoreDto(
-                        value = 7,
-                        displayValue = "7",
-                        period = 4
-                    )
-                ),
-                records = listOf(
-                    RecordDto(
-                        name = "overall",
-                        abbreviation = "Game",
-                        type = RecordType.OVERALL,
-                        summary = "5-3"
-                    ),
-                    RecordDto(
-                        name = "Home",
-                        abbreviation = null,
-                        type = RecordType.HOME,
-                        summary = "4-1"
-                    ),
-                    RecordDto(
-                        name = "Road",
-                        abbreviation = null,
-                        type = RecordType.AWAY,
-                        summary = "1-2"
-                    ),
-                    RecordDto(
-                        name = "vs. Conf.",
-                        abbreviation = null,
-                        type = RecordType.CONF,
-                        summary = "2-3"
-                    )
-                )
-            ),
-            CompetitorDto(
-                id = 245,
-                homeAway = HomeAway.AWAY,
-                team = TeamDto(
-                    abbreviation = "TA&M",
-                    displayName = "Texas A&M Aggies",
-                    id = 245,
-                    location = "Texas A&M",
-                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png",
-                    name = "Aggies",
-                    shortDisplayName = "Texas A&M"
-                ),
-                score = 49,
-                linescores = listOf(
-                    LinescoreDto(
-                        value = 14,
-                        displayValue = "14",
-                        period = 1
-                    ),
-                    LinescoreDto(
-                        value = 0,
-                        displayValue = "0",
-                        period = 2
-                    ),
-                    LinescoreDto(
-                        value = 21,
-                        displayValue = "21",
-                        period = 3
-                    ),
-                    LinescoreDto(
-                        value = 14,
-                        displayValue = "14",
-                        period = 4
-                    )
-                ),
-                records = listOf(
-                    RecordDto(
-                        name = "overall",
-                        abbreviation = "Game",
-                        type = RecordType.OVERALL,
-                        summary = "8-0"
-                    ),
-                    RecordDto(
-                        name = "Home",
-                        abbreviation = null,
-                        type = RecordType.HOME,
-                        summary = "5-0"
-                    ),
-                    RecordDto(
-                        name = "Road",
-                        abbreviation = null,
-                        type = RecordType.AWAY,
-                        summary = "3-0"
-                    ),
-                    RecordDto(
-                        name = "vs. Conf.",
-                        abbreviation = null,
-                        type = RecordType.CONF,
-                        summary = "5-0"
-                    )
-                )
-            )
-        ),
-        date = "2025-10-25T23:30:00Z",
-        status = StatusDto(
-            clock = 0,
-            displayClock = "0:00",
-            period = 4,
-            type = StatusTypeDto(
-                completed = true,
-                description = "Final",
-                detail = "Final",
-                id = 3,
-                name = "STATUS_FINAL",
-                shortDetail = "Final",
-                state = "post"
-            )
-        )
-    )
-
-    val sampleEndPeriodCompetitionDto = CompetitionDto(
-        id = 401752763,
-        competitors = listOf(
-            CompetitorDto(
-                id = 142,
-                homeAway = HomeAway.HOME,
-                team = TeamDto(
-                    id = 142,
-                    location = "Missouri",
-                    name = "Tigers",
-                    abbreviation = "MIZ",
-                    displayName = "Missouri Tigers",
-                    shortDisplayName = "Missouri",
-                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png"
-                ),
-                score = 0,
-                linescores = listOf(
-                    LinescoreDto(
-                        value = 0,
-                        displayValue = "0",
-                        period = 1
-                    )
-                ),
-                records = listOf(
-                    RecordDto(
-                        name = "overall",
-                        abbreviation = "overall",
-                        type = RecordType.OVERALL,
-                        summary = "6-2"
-                    ),
-                    RecordDto(
-                        name = "Home",
-                        abbreviation = "Home",
-                        type = RecordType.HOME,
-                        summary = "5-1"
-                    ),
-                    RecordDto(
-                        name = "Away",
-                        abbreviation = "Away",
-                        type = RecordType.AWAY,
-                        summary = "1-1"
-                    ),
-                    RecordDto(
-                        name = "vs. Conf.",
-                        abbreviation = "CONF",
-                        type = RecordType.CONF,
-                        summary = "2-2"
-                    )
-                )
-            ),
-            CompetitorDto(
-                id = 245,
-                homeAway = HomeAway.AWAY,
-                team = TeamDto(
-                    id = 245,
-                    location = "Texas A&M",
-                    name = "Aggies",
-                    abbreviation = "TA&M",
-                    displayName = "Texas A&M Aggies",
-                    shortDisplayName = "Texas A&M",
-                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png"
-                ),
-                score = 7,
-                linescores = listOf(
-                    LinescoreDto(
-                        value = 7,
-                        displayValue = "7",
-                        period = 1
-                    )
-                ),
-                records = listOf(
-                    RecordDto(
-                        name = "overall",
-                        abbreviation = "overall",
-                        type = RecordType.OVERALL,
-                        summary = "8-0"
-                    ),
-                    RecordDto(
-                        name = "Home",
-                        abbreviation = "Home",
-                        type = RecordType.HOME,
-                        summary = "5-0"
-                    ),
-                    RecordDto(
-                        name = "Away",
-                        abbreviation = "Away",
-                        type = RecordType.AWAY,
-                        summary = "3-0"
-                    ),
-                    RecordDto(
-                        name = "vs. Conf.",
-                        abbreviation = "CONF",
-                        type = RecordType.CONF,
-                        summary = "5-0"
-                    )
-                )
-            )
-        ),
-        date = "2025-11-08T20:30:00Z",
-        status = StatusDto(
-            clock = 0,
-            displayClock = "0:00",
-            period = 1,
-            type = StatusTypeDto(
-                id = 22,
-                name = "STATUS_END_PERIOD",
-                state = "in",
-                completed = false,
-                description = "End of Period",
-                detail = "End of 1st Quarter",
-                shortDetail = "End of 1st"
-            )
-        )
-    )
-
-    val sampleInProgressCompetitionDto = CompetitionDto(
-        id = 401752763,
-        competitors = listOf(
-            CompetitorDto(
-                id = 142,
-                homeAway = HomeAway.HOME,
-                team = TeamDto(
-                    id = 142,
-                    location = "Missouri",
-                    name = "Tigers",
-                    abbreviation = "MIZ",
-                    displayName = "Missouri Tigers",
-                    shortDisplayName = "Missouri",
-                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png"
-                ),
-                score = 0,
-                linescores = listOf(
-                    LinescoreDto(
-                        value = 0,
-                        displayValue = "0",
-                        period = 1
-                    ),
-                    LinescoreDto(
-                        value = 0,
-                        displayValue = "0",
-                        period = 2
-                    )
-                ),
-                records = listOf(
-                    RecordDto(
-                        name = "overall",
-                        abbreviation = "overall",
-                        type = RecordType.OVERALL,
-                        summary = "6-2"
-                    ),
-                    RecordDto(
-                        name = "Home",
-                        abbreviation = "Home",
-                        type = RecordType.HOME,
-                        summary = "5-1"
-                    ),
-                    RecordDto(
-                        name = "Away",
-                        abbreviation = "Away",
-                        type = RecordType.AWAY,
-                        summary = "1-1"
-                    ),
-                    RecordDto(
-                        name = "vs. Conf.",
-                        abbreviation = "CONF",
-                        type = RecordType.CONF,
-                        summary = "2-2"
-                    )
-                )
-            ),
-            CompetitorDto(
-                id = 245,
-                homeAway = HomeAway.AWAY,
-                team = TeamDto(
-                    id = 245,
-                    location = "Texas A&M",
-                    name = "Aggies",
-                    abbreviation = "TA&M",
-                    displayName = "Texas A&M Aggies",
-                    shortDisplayName = "Texas A&M",
-                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png"
-                ),
-                score = 7,
-                linescores = listOf(
-                    LinescoreDto(
-                        value = 7,
-                        displayValue = "7",
-                        period = 1
-                    ),
-                    LinescoreDto(
-                        value = 0,
-                        displayValue = "0",
-                        period = 2
-                    )
-                ),
-                records = listOf(
-                    RecordDto(
-                        name = "overall",
-                        abbreviation = "overall",
-                        type = RecordType.OVERALL,
-                        summary = "8 - 0"
-                    ),
-                    RecordDto(
-                        name = "Home",
-                        abbreviation = "Home",
-                        type = RecordType.HOME,
-                        summary = "5 - 0"
-                    ),
-                    RecordDto(
-                        name = "Away",
-                        abbreviation = "Away",
-                        type = RecordType.AWAY,
-                        summary = "3 - 0"
-                    ),
-                    RecordDto(
-                        name = "vs.Conf.",
-                        abbreviation = "CONF",
-                        type = RecordType.CONF,
-                        summary = "5 - 0"
-                    )
-                )
-            )
-        ),
-        date = "2025-11-08T20:30:00Z",
-        status = StatusDto(
-            clock = 858,
-            displayClock = "14:18",
-            period = 2,
-            type = StatusTypeDto(
-                id = 2,
-                name = "STATUS_IN_PROGRESS",
-                state = "in",
-                completed = false,
-                description = "In Progress",
-                detail = "14:18 - 2nd Quarter",
-                shortDetail = "14:18 - 2nd"
-            )
-        )
-    )
-
-    val sampleScoreboard = ScoreboardDto(
+    val sampleScoreboardDto = ScoreboardDto(
         leagues = listOf(
             LeagueDto(
                 id = 23,
@@ -410,8 +29,8 @@ object MockData {
                 abbreviation = "NCAAF",
                 midsizeName = "NCAA Football",
                 slug = "college-football",
-                calendarStartDate = "2025-02-01T08:00Z",
-                calendarEndDate = "2026-01-21T07:59Z",
+                calendarStartDate = "2025-02-01T08:00:00Z",
+                calendarEndDate = "2026-01-21T07:59:00Z",
                 calendar = listOf(
                     ListCalendarDto(
                         label = "Regular Season",
@@ -598,723 +217,16 @@ object MockData {
         ),
         events = listOf(
             EventDto(
-                id = 401752763,
-                name = "Texas A&M Aggies at Missouri Tigers",
-                shortName = "TA&M @ MIZ",
+                id = 401777353,
+                name = "Indiana Hoosiers at Ohio State Buckeyes",
+                shortName = "IU VS OSU",
                 competitions = listOf(
                     CompetitionDto(
-                        id = 401752763,
+                        id = 401777353,
                         competitors = listOf(
-                            CompetitorDto(
-                                id = 142,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 142,
-                                    location = "Missouri",
-                                    name = "Tigers",
-                                    abbreviation = "MIZ",
-                                    displayName = "Missouri Tigers",
-                                    shortDisplayName = "Missouri",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "6-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "5-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "1-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "2-2"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 245,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 245,
-                                    location = "Texas A&M",
-                                    name = "Aggies",
-                                    abbreviation = "TA&M",
-                                    displayName = "Texas A&M Aggies",
-                                    shortDisplayName = "Texas A&M",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png"
-                                ),
-                                score = 7,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "8-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "5-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "3-0"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "5-0"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T20:30:00Z",
-                        status = StatusDto(
-                            clock = 110,
-                            displayClock = "1:50",
-                            period = 2,
-                            type = StatusTypeDto(
-                                id = 2,
-                                name = "STATUS_IN_PROGRESS",
-                                state = "in",
-                                completed = false,
-                                description = "In Progress",
-                                detail = "1:50 - 2nd Quarter",
-                                shortDetail = "1:50 - 2nd"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752898,
-                name = "Oregon Ducks at Iowa Hawkeyes",
-                shortName = "ORE @ IOWA",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752898,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 2294,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 2294,
-                                    location = "Iowa",
-                                    name = "Hawkeyes",
-                                    abbreviation = "IOWA",
-                                    displayName = "Iowa Hawkeyes",
-                                    shortDisplayName = "Iowa",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png"
-                                ),
-                                score = 7,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "6-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "4-1"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 2483,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 2483,
-                                    location = "Oregon",
-                                    name = "Ducks",
-                                    abbreviation = "ORE",
-                                    displayName = "Oregon Ducks",
-                                    shortDisplayName = "Oregon",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png"
-                                ),
-                                score = 9,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 2,
-                                        displayValue = "2",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "7-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "3-0"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "4-1"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T20:30:00Z",
-                        status = StatusDto(
-                            clock = 92,
-                            displayClock = "1:32",
-                            period = 2,
-                            type = StatusTypeDto(
-                                id = 2,
-                                name = "STATUS_IN_PROGRESS",
-                                state = "in",
-                                completed = false,
-                                description = "In Progress",
-                                detail = "1:32 - 2nd Quarter",
-                                shortDetail = "1:32 - 2nd"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401754587,
-                name = "Syracuse Orange at Miami Hurricanes",
-                shortName = "SYR @ MIA",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401754587,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 2390,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 2390,
-                                    location = "Miami",
-                                    name = "Hurricanes",
-                                    abbreviation = "MIA",
-                                    displayName = "Miami Hurricanes",
-                                    shortDisplayName = "Miami",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png"
-                                ),
-                                score = 14,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 14,
-                                        displayValue = "14",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "6-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "5-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "1-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "2-2"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 183,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 183,
-                                    location = "Syracuse",
-                                    name = "Orange",
-                                    abbreviation = "SYR",
-                                    displayName = "Syracuse Orange",
-                                    shortDisplayName = "Syracuse",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/183.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "3-6"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "2-3"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "1-2"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "1-5"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T20:30:00Z",
-                        status = StatusDto(
-                            clock = 35,
-                            displayClock = "0:35",
-                            period = 2,
-                            type = StatusTypeDto(
-                                id = 2,
-                                name = "STATUS_IN_PROGRESS",
-                                state = "in",
-                                completed = false,
-                                description = "In Progress",
-                                detail = "0:35 - 2nd Quarter",
-                                shortDetail = "0:35 - 2nd"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752764,
-                name = "Auburn Tigers at Vanderbilt Commodores",
-                shortName = "AUB @ VAN",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752764,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 238,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 238,
-                                    location = "Vanderbilt",
-                                    name = "Commodores",
-                                    abbreviation = "VAN",
-                                    displayName = "Vanderbilt Commodores",
-                                    shortDisplayName = "Vanderbilt",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png"
-                                ),
-                                score = 3,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 3,
-                                        displayValue = "3",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "7-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "5-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-2"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "3-2"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 2,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 2,
-                                    location = "Auburn",
-                                    name = "Tigers",
-                                    abbreviation = "AUB",
-                                    displayName = "Auburn Tigers",
-                                    shortDisplayName = "Auburn",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png"
-                                ),
-                                score = 14,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 2
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "4-5"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "2-3"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-2"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "1-5"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T21:00:00Z",
-                        status = StatusDto(
-                            clock = 330,
-                            displayClock = "5:30",
-                            period = 2,
-                            type = StatusTypeDto(
-                                id = 2,
-                                name = "STATUS_IN_PROGRESS",
-                                state = "in",
-                                completed = false,
-                                description = "In Progress",
-                                detail = "5:30 - 2nd Quarter",
-                                shortDetail = "5:30 - 2nd"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752899,
-                name = "Washington Huskies at Wisconsin Badgers",
-                shortName = "WASH @ WIS",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752899,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 275,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 275,
-                                    location = "Wisconsin",
-                                    name = "Badgers",
-                                    abbreviation = "WIS",
-                                    displayName = "Wisconsin Badgers",
-                                    shortDisplayName = "Wisconsin",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "2-6"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "2-3"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "0-3"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "0-5"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 264,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 264,
-                                    location = "Washington",
-                                    name = "Huskies",
-                                    abbreviation = "WASH",
-                                    displayName = "Washington Huskies",
-                                    shortDisplayName = "Washington",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "6-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "3-2"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T21:30:00Z",
-                        status = StatusDto(
-                            clock = 493,
-                            displayClock = "8:13",
-                            period = 1,
-                            type = StatusTypeDto(
-                                id = 2,
-                                name = "STATUS_IN_PROGRESS",
-                                state = "in",
-                                completed = false,
-                                description = "In Progress",
-                                detail = "8:13 - 1st Quarter",
-                                shortDetail = "8:13 - 1st"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752897,
-                name = "Ohio State Buckeyes at Purdue Boilermakers",
-                shortName = "OSU @ PUR",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752897,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 2509,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 2509,
-                                    location = "Purdue",
-                                    name = "Boilermakers",
-                                    abbreviation = "PUR",
-                                    displayName = "Purdue Boilermakers",
-                                    shortDisplayName = "Purdue",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2509.png"
-                                ),
-                                score = 10,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 3,
-                                        displayValue = "3",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 2
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 3
-                                    ),
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 4
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "Game",
-                                        type = RecordType.OVERALL,
-                                        summary = "2-8"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = null,
-                                        type = RecordType.HOME,
-                                        summary = "2-4"
-                                    ),
-                                    RecordDto(
-                                        name = "Road",
-                                        abbreviation = null,
-                                        type = RecordType.AWAY,
-                                        summary = "0-4"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = null,
-                                        type = RecordType.CONF,
-                                        summary = "0-7"
-                                    )
-                                )
-                            ),
                             CompetitorDto(
                                 id = 194,
-                                homeAway = HomeAway.AWAY,
+                                homeAway = HomeAway.HOME,
                                 team = TeamDto(
                                     id = 194,
                                     location = "Ohio State",
@@ -1324,142 +236,53 @@ object MockData {
                                     shortDisplayName = "Ohio State",
                                     logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png"
                                 ),
-                                score = 34,
+                                score = 10,
                                 linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 24,
-                                        displayValue = "24",
-                                        period = 2
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 3
-                                    ),
-                                    LinescoreDto(
-                                        value = 10,
-                                        displayValue = "10",
-                                        period = 4
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "Game",
-                                        type = RecordType.OVERALL,
-                                        summary = "9-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = null,
-                                        type = RecordType.HOME,
-                                        summary = "5-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Road",
-                                        abbreviation = null,
-                                        type = RecordType.AWAY,
-                                        summary = "4-0"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = null,
-                                        type = RecordType.CONF,
-                                        summary = "6-0"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T18:00:00Z",
-                        status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
-                            period = 4,
-                            type = StatusTypeDto(
-                                id = 3,
-                                name = "STATUS_FINAL",
-                                state = "post",
-                                completed = true,
-                                description = "Final",
-                                detail = "Final",
-                                shortDetail = "Final"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752893,
-                name = "Indiana Hoosiers at Penn State Nittany Lions",
-                shortName = "IU @ PSU",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752893,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 213,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 213,
-                                    location = "Penn State",
-                                    name = "Nittany Lions",
-                                    abbreviation = "PSU",
-                                    displayName = "Penn State Nittany Lions",
-                                    shortDisplayName = "Penn State",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png"
-                                ),
-                                score = 24,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
                                     LinescoreDto(
                                         value = 7,
                                         displayValue = "7",
-                                        period = 2
+                                        period = 1
                                     ),
                                     LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
+                                        period = 2
+                                    ),
+                                    LinescoreDto(
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 3
                                     ),
                                     LinescoreDto(
-                                        value = 14,
-                                        displayValue = "14",
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
                                     RecordDto(
                                         name = "overall",
-                                        abbreviation = "Game",
+                                        abbreviation = "overall",
                                         type = RecordType.OVERALL,
-                                        summary = "3-6"
+                                        summary = "12-0"
                                     ),
                                     RecordDto(
                                         name = "Home",
-                                        abbreviation = null,
+                                        abbreviation = "Home",
                                         type = RecordType.HOME,
-                                        summary = "3-3"
+                                        summary = "7-0"
                                     ),
                                     RecordDto(
-                                        name = "Road",
-                                        abbreviation = null,
+                                        name = "Away",
+                                        abbreviation = "Away",
                                         type = RecordType.AWAY,
-                                        summary = "0-3"
+                                        summary = "5-0"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
-                                        abbreviation = null,
+                                        abbreviation = "CONF",
                                         type = RecordType.CONF,
-                                        summary = "0-6"
+                                        summary = "9-0"
                                     )
                                 )
                             ),
@@ -1475,16 +298,121 @@ object MockData {
                                     shortDisplayName = "Indiana",
                                     logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/84.png"
                                 ),
-                                score = 27,
+                                score = 13,
                                 linescores = listOf(
                                     LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
+                                        value = 3,
+                                        displayValue = "3",
                                         period = 1
                                     ),
                                     LinescoreDto(
-                                        value = 10,
-                                        displayValue = "10",
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 2
+                                    ),
+                                    LinescoreDto(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 3
+                                    ),
+                                    LinescoreDto(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    RecordDto(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "12-0"
+                                    ),
+                                    RecordDto(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "7-0"
+                                    ),
+                                    RecordDto(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "5-0"
+                                    ),
+                                    RecordDto(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "9-0"
+                                    )
+                                )
+                            )
+                        ),
+                        date = "2025-12-07T01:00:00Z",
+                        situation = SituationDto(
+                            awayTimeouts = 0,
+                            distance = 7,
+                            down = 0,
+                            downDistanceText = null,
+                            homeTimeouts = 0,
+                            isRedZone = false,
+                            lastPlay = LastPlayDto(
+                                end = EndDto(yardLine = 40),
+                                id = "401777353639",
+                                start = StartDto(yardLine = 40)
+                            ),
+                            possessionText = null,
+                            shortDownDistanceText = null,
+                            yardLine = 40
+                        ),
+                        status = StatusDto(
+                            clock = 18,
+                            displayClock = "0:18",
+                            period = 4,
+                            type = StatusTypeDto(
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "0:18 - 4th Quarter",
+                                shortDetail = "0:18 - 4th"
+                            )
+                        )
+                    )
+                )
+            ),
+            EventDto(
+                id = 401777328,
+                name = "Duke Blue Devils at Virginia Cavaliers",
+                shortName = "DUKE VS UVA",
+                competitions = listOf(
+                    CompetitionDto(
+                        id = 401777328,
+                        competitors = listOf(
+                            CompetitorDto(
+                                id = 258,
+                                homeAway = HomeAway.HOME,
+                                team = TeamDto(
+                                    id = 258,
+                                    location = "Virginia",
+                                    name = "Cavaliers",
+                                    abbreviation = "UVA",
+                                    displayName = "Virginia Cavaliers",
+                                    shortDisplayName = "Virginia",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png"
+                                ),
+                                score = 13,
+                                linescores = listOf(
+                                    LinescoreDto(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    LinescoreDto(
+                                        value = 7,
+                                        displayValue = "7",
                                         period = 2
                                     ),
                                     LinescoreDto(
@@ -1493,82 +421,160 @@ object MockData {
                                         period = 3
                                     ),
                                     LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
+                                        value = 3,
+                                        displayValue = "3",
                                         period = 4
                                     )
                                 ),
                                 records = listOf(
                                     RecordDto(
                                         name = "overall",
-                                        abbreviation = "Game",
+                                        abbreviation = "overall",
                                         type = RecordType.OVERALL,
-                                        summary = "10-0"
+                                        summary = "10-2"
                                     ),
                                     RecordDto(
                                         name = "Home",
-                                        abbreviation = null,
+                                        abbreviation = "Home",
                                         type = RecordType.HOME,
-                                        summary = "6-0"
+                                        summary = "6-1"
                                     ),
                                     RecordDto(
-                                        name = "Road",
-                                        abbreviation = null,
+                                        name = "Away",
+                                        abbreviation = "Away",
                                         type = RecordType.AWAY,
-                                        summary = "4-0"
+                                        summary = "4-1"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
-                                        abbreviation = null,
+                                        abbreviation = "CONF",
                                         type = RecordType.CONF,
-                                        summary = "7-0"
+                                        summary = "7-1"
+                                    )
+                                )
+                            ),
+                            CompetitorDto(
+                                id = 150,
+                                homeAway = HomeAway.AWAY,
+                                team = TeamDto(
+                                    id = 150,
+                                    location = "Duke",
+                                    name = "Blue Devils",
+                                    abbreviation = "DUKE",
+                                    displayName = "Duke Blue Devils",
+                                    shortDisplayName = "Duke",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/150.png"
+                                ),
+                                score = 20,
+                                linescores = listOf(
+                                    LinescoreDto(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 1
+                                    ),
+                                    LinescoreDto(
+                                        value = 7,
+                                        displayValue = "7",
+                                        period = 2
+                                    ),
+                                    LinescoreDto(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 3
+                                    ),
+                                    LinescoreDto(
+                                        value = 3,
+                                        displayValue = "3",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    RecordDto(
+                                        name = "overall",
+                                        abbreviation = "overall",
+                                        type = RecordType.OVERALL,
+                                        summary = "7-5"
+                                    ),
+                                    RecordDto(
+                                        name = "Home",
+                                        abbreviation = "Home",
+                                        type = RecordType.HOME,
+                                        summary = "3-3"
+                                    ),
+                                    RecordDto(
+                                        name = "Away",
+                                        abbreviation = "Away",
+                                        type = RecordType.AWAY,
+                                        summary = "4-2"
+                                    ),
+                                    RecordDto(
+                                        name = "vs. Conf.",
+                                        abbreviation = "CONF",
+                                        type = RecordType.CONF,
+                                        summary = "6-2"
                                     )
                                 )
                             )
                         ),
-                        date = "2025-11-08T17:00:00Z",
+                        date = "2025-12-07T01:00:00Z",
+                        situation = SituationDto(
+                            awayTimeouts = 0,
+                            distance = -1,
+                            down = -1,
+                            downDistanceText = null,
+                            homeTimeouts = 0,
+                            isRedZone = false,
+                            lastPlay = LastPlayDto(
+                                end = EndDto(yardLine = 35),
+                                id = "401777328651",
+                                start = StartDto(yardLine = 75)
+                            ),
+                            possessionText = null,
+                            shortDownDistanceText = null,
+                            yardLine = 35
+                        ),
                         status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
+                            clock = 234,
+                            displayClock = "3:54",
                             period = 4,
                             type = StatusTypeDto(
-                                id = 3,
-                                name = "STATUS_FINAL",
-                                state = "post",
-                                completed = true,
-                                description = "Final",
-                                detail = "Final",
-                                shortDetail = "Final"
+                                id = 2,
+                                name = "STATUS_IN_PROGRESS",
+                                state = "in",
+                                completed = false,
+                                description = "In Progress",
+                                detail = "3:54 - 4th Quarter",
+                                shortDetail = "3:54 - 4th"
                             )
                         )
                     )
                 )
             ),
             EventDto(
-                id = 401752762,
-                name = "Georgia Bulldogs at Mississippi State Bulldogs",
-                shortName = "UGA @ MSST",
+                id = 401777351,
+                name = "Georgia Bulldogs at Alabama Crimson Tide",
+                shortName = "UGA VS ALA",
                 competitions = listOf(
                     CompetitionDto(
-                        id = 401752762,
+                        id = 401777351,
                         competitors = listOf(
                             CompetitorDto(
-                                id = 344,
+                                id = 333,
                                 homeAway = HomeAway.HOME,
                                 team = TeamDto(
-                                    id = 344,
-                                    location = "Mississippi State",
-                                    name = "Bulldogs",
-                                    abbreviation = "MSST",
-                                    displayName = "Mississippi State Bulldogs",
-                                    shortDisplayName = "Mississippi St",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/344.png"
+                                    id = 333,
+                                    location = "Alabama",
+                                    name = "Crimson Tide",
+                                    abbreviation = "ALA",
+                                    displayName = "Alabama Crimson Tide",
+                                    shortDisplayName = "Alabama",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/333.png"
                                 ),
-                                score = 21,
+                                score = 7,
                                 linescores = listOf(
                                     LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 1
                                     ),
                                     LinescoreDto(
@@ -1577,8 +583,8 @@ object MockData {
                                         period = 2
                                     ),
                                     LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 3
                                     ),
                                     LinescoreDto(
@@ -1592,25 +598,25 @@ object MockData {
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
-                                        summary = "5-5"
+                                        summary = "10-3"
                                     ),
                                     RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
-                                        summary = "3-3"
+                                        summary = "6-1"
                                     ),
                                     RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
-                                        summary = "2-2"
+                                        summary = "4-1"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
-                                        summary = "1-5"
+                                        summary = "7-1"
                                     )
                                 )
                             ),
@@ -1626,26 +632,26 @@ object MockData {
                                     shortDisplayName = "Georgia",
                                     logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/61.png"
                                 ),
-                                score = 41,
+                                score = 28,
                                 linescores = listOf(
                                     LinescoreDto(
-                                        value = 3,
-                                        displayValue = "3",
+                                        value = 7,
+                                        displayValue = "7",
                                         period = 1
                                     ),
                                     LinescoreDto(
-                                        value = 21,
-                                        displayValue = "21",
+                                        value = 7,
+                                        displayValue = "7",
                                         period = 2
                                     ),
                                     LinescoreDto(
-                                        value = 14,
-                                        displayValue = "14",
+                                        value = 7,
+                                        displayValue = "7",
                                         period = 3
                                     ),
                                     LinescoreDto(
-                                        value = 3,
-                                        displayValue = "3",
+                                        value = 7,
+                                        displayValue = "7",
                                         period = 4
                                     )
                                 ),
@@ -1654,13 +660,13 @@ object MockData {
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
-                                        summary = "8-1"
+                                        summary = "12-1"
                                     ),
                                     RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
-                                        summary = "4-1"
+                                        summary = "6-1"
                                     ),
                                     RecordDto(
                                         name = "Road",
@@ -1672,12 +678,13 @@ object MockData {
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
-                                        summary = "6-1"
+                                        summary = "7-1"
                                     )
                                 )
                             )
                         ),
-                        date = "2025-11-08T17:00:00Z",
+                        date = "2025-12-06T21:00:00Z",
+                        situation = null,
                         status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
@@ -1696,163 +703,12 @@ object MockData {
                 )
             ),
             EventDto(
-                id = 401752761,
-                name = "The Citadel Bulldogs at Ole Miss Rebels",
-                shortName = "CIT @ MISS",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752761,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 145,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 145,
-                                    location = "Ole Miss",
-                                    name = "Rebels",
-                                    abbreviation = "MISS",
-                                    displayName = "Ole Miss Rebels",
-                                    shortDisplayName = "Ole Miss",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png"
-                                ),
-                                score = 49,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 21,
-                                        displayValue = "21",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 14,
-                                        displayValue = "14",
-                                        period = 2
-                                    ),
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 3
-                                    ),
-                                    LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
-                                        period = 4
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "Game",
-                                        type = RecordType.OVERALL,
-                                        summary = "9-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = null,
-                                        type = RecordType.HOME,
-                                        summary = "7-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Road",
-                                        abbreviation = null,
-                                        type = RecordType.AWAY,
-                                        summary = "2-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = null,
-                                        type = RecordType.CONF,
-                                        summary = "5-1"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 2643,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 2643,
-                                    location = "The Citadel",
-                                    name = "Bulldogs",
-                                    abbreviation = "CIT",
-                                    displayName = "The Citadel Bulldogs",
-                                    shortDisplayName = "The Citadel",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 1
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 2
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 3
-                                    ),
-                                    LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
-                                        period = 4
-                                    )
-                                ),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "Game",
-                                        type = RecordType.OVERALL,
-                                        summary = "4-6"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = null,
-                                        type = RecordType.HOME,
-                                        summary = "2-3"
-                                    ),
-                                    RecordDto(
-                                        name = "Road",
-                                        abbreviation = null,
-                                        type = RecordType.AWAY,
-                                        summary = "2-3"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = null,
-                                        type = RecordType.CONF,
-                                        summary = "3-3"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-08T18:00:00Z",
-                        status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
-                            period = 4,
-                            type = StatusTypeDto(
-                                id = 3,
-                                name = "STATUS_FINAL",
-                                state = "post",
-                                completed = true,
-                                description = "Final",
-                                detail = "Final",
-                                shortDetail = "Final"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401756945,
+                id = 401777327,
                 name = "BYU Cougars at Texas Tech Red Raiders",
-                shortName = "BYU @ TTU",
+                shortName = "BYU VS TTU",
                 competitions = listOf(
                     CompetitionDto(
-                        id = 401756945,
+                        id = 401777327,
                         competitors = listOf(
                             CompetitorDto(
                                 id = 2641,
@@ -1866,26 +722,26 @@ object MockData {
                                     shortDisplayName = "Texas Tech",
                                     logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png"
                                 ),
-                                score = 29,
+                                score = 34,
                                 linescores = listOf(
                                     LinescoreDto(
-                                        value = 10,
-                                        displayValue = "10",
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 1
                                     ),
                                     LinescoreDto(
-                                        value = 3,
-                                        displayValue = "3",
+                                        value = 13,
+                                        displayValue = "13",
                                         period = 2
                                     ),
                                     LinescoreDto(
-                                        value = 6,
-                                        displayValue = "6",
+                                        value = 8,
+                                        displayValue = "8",
                                         period = 3
                                     ),
                                     LinescoreDto(
-                                        value = 10,
-                                        displayValue = "10",
+                                        value = 13,
+                                        displayValue = "13",
                                         period = 4
                                     )
                                 ),
@@ -1894,25 +750,25 @@ object MockData {
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
-                                        summary = "9-1"
+                                        summary = "12-1"
                                     ),
                                     RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
-                                        summary = "6-0"
+                                        summary = "7-0"
                                     ),
                                     RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
-                                        summary = "3-1"
+                                        summary = "4-1"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
-                                        summary = "6-1"
+                                        summary = "8-1"
                                     )
                                 )
                             ),
@@ -1931,8 +787,8 @@ object MockData {
                                 score = 7,
                                 linescores = listOf(
                                     LinescoreDto(
-                                        value = 0,
-                                        displayValue = "0",
+                                        value = 7,
+                                        displayValue = "7",
                                         period = 1
                                     ),
                                     LinescoreDto(
@@ -1946,8 +802,8 @@ object MockData {
                                         period = 3
                                     ),
                                     LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 4
                                     )
                                 ),
@@ -1956,30 +812,31 @@ object MockData {
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
-                                        summary = "8-1"
+                                        summary = "11-2"
                                     ),
                                     RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
-                                        summary = "4-0"
+                                        summary = "6-0"
                                     ),
                                     RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
-                                        summary = "4-1"
+                                        summary = "5-1"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
-                                        summary = "5-1"
+                                        summary = "8-1"
                                     )
                                 )
                             )
                         ),
-                        date = "2025-11-08T17:00:00Z",
+                        date = "2025-12-06T17:00:00Z",
+                        situation = null,
                         status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
@@ -1998,462 +855,26 @@ object MockData {
                 )
             ),
             EventDto(
-                id = 401754589,
-                name = "Wake Forest Demon Deacons at Virginia Cavaliers",
-                shortName = "WAKE @ UVA",
+                id = 401777324,
+                name = "North Texas Mean Green at Tulane Green Wave",
+                shortName = "UNT @ TULN",
                 competitions = listOf(
                     CompetitionDto(
-                        id = 401754589,
+                        id = 401777324,
                         competitors = listOf(
                             CompetitorDto(
-                                id = 258,
+                                id = 2655,
                                 homeAway = HomeAway.HOME,
                                 team = TeamDto(
-                                    id = 258,
-                                    location = "Virginia",
-                                    name = "Cavaliers",
-                                    abbreviation = "UVA",
-                                    displayName = "Virginia Cavaliers",
-                                    shortDisplayName = "Virginia",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png"
+                                    id = 2655,
+                                    location = "Tulane",
+                                    name = "Green Wave",
+                                    abbreviation = "TULN",
+                                    displayName = "Tulane Green Wave",
+                                    shortDisplayName = "Tulane",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png"
                                 ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "8-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "5-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "3-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "5-0"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 154,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 154,
-                                    location = "Wake Forest",
-                                    name = "Demon Deacons",
-                                    abbreviation = "WAKE",
-                                    displayName = "Wake Forest Demon Deacons",
-                                    shortDisplayName = "Wake Forest",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/154.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "5-3"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "3-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "2-3"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-09T00:00:00Z",
-                        status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
-                            period = 0,
-                            type = StatusTypeDto(
-                                id = 1,
-                                name = "STATUS_SCHEDULED",
-                                state = "pre",
-                                completed = false,
-                                description = "Scheduled",
-                                detail = "Sat, November 8th at 7:00 PM EST",
-                                shortDetail = "11/8 - 7:00 PM EST"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401754585,
-                name = "California Golden Bears at Louisville Cardinals",
-                shortName = "CAL @ LOU",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401754585,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 97,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 97,
-                                    location = "Louisville",
-                                    name = "Cardinals",
-                                    abbreviation = "LOU",
-                                    displayName = "Louisville Cardinals",
-                                    shortDisplayName = "Louisville",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/97.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "7-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "3-0"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "4-1"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 25,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 25,
-                                    location = "California",
-                                    name = "Golden Bears",
-                                    abbreviation = "CAL",
-                                    displayName = "California Golden Bears",
-                                    shortDisplayName = "California",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "5-4"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "3-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-2"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "2-3"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-09T00:00:00Z",
-                        status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
-                            period = 0,
-                            type = StatusTypeDto(
-                                id = 1,
-                                name = "STATUS_SCHEDULED",
-                                state = "pre",
-                                completed = false,
-                                description = "Scheduled",
-                                detail = "Sat, November 8th at 7:00 PM EST",
-                                shortDetail = "11/8 - 7:00 PM EST"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752759,
-                name = "LSU Tigers at Alabama Crimson Tide",
-                shortName = "LSU @ ALA",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752759,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 333,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 333,
-                                    location = "Alabama",
-                                    name = "Crimson Tide",
-                                    abbreviation = "ALA",
-                                    displayName = "Alabama Crimson Tide",
-                                    shortDisplayName = "Alabama",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/333.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "7-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "3-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "5-0"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 99,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 99,
-                                    location = "LSU",
-                                    name = "Tigers",
-                                    abbreviation = "LSU",
-                                    displayName = "LSU Tigers",
-                                    shortDisplayName = "LSU",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "5-3"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "1-2"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "2-3"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-09T00:30:00Z",
-                        status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
-                            period = 0,
-                            type = StatusTypeDto(
-                                id = 1,
-                                name = "STATUS_SCHEDULED",
-                                state = "pre",
-                                completed = false,
-                                description = "Scheduled",
-                                detail = "Sat, November 8th at 7:30 PM EST",
-                                shortDetail = "11/8 - 7:30 PM EST"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401757166,
-                name = "Navy Midshipmen at Notre Dame Fighting Irish",
-                shortName = "NAVY @ ND",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401757166,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 87,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 87,
-                                    location = "Notre Dame",
-                                    name = "Fighting Irish",
-                                    abbreviation = "ND",
-                                    displayName = "Notre Dame Fighting Irish",
-                                    shortDisplayName = "Notre Dame",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/87.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "6-2"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "4-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "0-0"
-                                    )
-                                )
-                            ),
-                            CompetitorDto(
-                                id = 2426,
-                                homeAway = HomeAway.AWAY,
-                                team = TeamDto(
-                                    id = 2426,
-                                    location = "Navy",
-                                    name = "Midshipmen",
-                                    abbreviation = "NAVY",
-                                    displayName = "Navy Midshipmen",
-                                    shortDisplayName = "Navy",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2426.png"
-                                ),
-                                score = 0,
-                                linescores = listOf(),
-                                records = listOf(
-                                    RecordDto(
-                                        name = "overall",
-                                        abbreviation = "overall",
-                                        type = RecordType.OVERALL,
-                                        summary = "7-1"
-                                    ),
-                                    RecordDto(
-                                        name = "Home",
-                                        abbreviation = "Home",
-                                        type = RecordType.HOME,
-                                        summary = "5-0"
-                                    ),
-                                    RecordDto(
-                                        name = "Away",
-                                        abbreviation = "Away",
-                                        type = RecordType.AWAY,
-                                        summary = "2-1"
-                                    ),
-                                    RecordDto(
-                                        name = "vs. Conf.",
-                                        abbreviation = "CONF",
-                                        type = RecordType.CONF,
-                                        summary = "5-1"
-                                    )
-                                )
-                            )
-                        ),
-                        date = "2025-11-09T00:30:00Z",
-                        status = StatusDto(
-                            clock = 0,
-                            displayClock = "0:00",
-                            period = 0,
-                            type = StatusTypeDto(
-                                id = 1,
-                                name = "STATUS_SCHEDULED",
-                                state = "pre",
-                                completed = false,
-                                description = "Scheduled",
-                                detail = "Sat, November 8th at 7:30 PM EST",
-                                shortDetail = "11/8 - 7:30 PM EST"
-                            )
-                        )
-                    )
-                )
-            ),
-            EventDto(
-                id = 401752896,
-                name = "Northwestern Wildcats at USC Trojans",
-                shortName = "NU @ USC",
-                competitions = listOf(
-                    CompetitionDto(
-                        id = 401752896,
-                        competitors = listOf(
-                            CompetitorDto(
-                                id = 30,
-                                homeAway = HomeAway.HOME,
-                                team = TeamDto(
-                                    id = 30,
-                                    location = "USC",
-                                    name = "Trojans",
-                                    abbreviation = "USC",
-                                    displayName = "USC Trojans",
-                                    shortDisplayName = "USC",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png"
-                                ),
-                                score = 38,
+                                score = 34,
                                 linescores = listOf(
                                     LinescoreDto(
                                         value = 7,
@@ -2461,8 +882,8 @@ object MockData {
                                         period = 1
                                     ),
                                     LinescoreDto(
-                                        value = 14,
-                                        displayValue = "14",
+                                        value = 17,
+                                        displayValue = "17",
                                         period = 2
                                     ),
                                     LinescoreDto(
@@ -2471,8 +892,8 @@ object MockData {
                                         period = 3
                                     ),
                                     LinescoreDto(
-                                        value = 10,
-                                        displayValue = "10",
+                                        value = 3,
+                                        displayValue = "3",
                                         period = 4
                                     )
                                 ),
@@ -2481,41 +902,41 @@ object MockData {
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
-                                        summary = "7-2"
+                                        summary = "11-2"
                                     ),
                                     RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
-                                        summary = "5-0"
+                                        summary = "7-0"
                                     ),
                                     RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
-                                        summary = "2-2"
+                                        summary = "4-2"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
-                                        summary = "5-1"
+                                        summary = "7-1"
                                     )
                                 )
                             ),
                             CompetitorDto(
-                                id = 77,
+                                id = 249,
                                 homeAway = HomeAway.AWAY,
                                 team = TeamDto(
-                                    id = 77,
-                                    location = "Northwestern",
-                                    name = "Wildcats",
-                                    abbreviation = "NU",
-                                    displayName = "Northwestern Wildcats",
-                                    shortDisplayName = "Northwestern",
-                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png"
+                                    id = 249,
+                                    location = "North Texas",
+                                    name = "Mean Green",
+                                    abbreviation = "UNT",
+                                    displayName = "North Texas Mean Green",
+                                    shortDisplayName = "North Texas",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/249.png"
                                 ),
-                                score = 17,
+                                score = 21,
                                 linescores = listOf(
                                     LinescoreDto(
                                         value = 7,
@@ -2523,13 +944,165 @@ object MockData {
                                         period = 1
                                     ),
                                     LinescoreDto(
-                                        value = 7,
-                                        displayValue = "7",
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 2
                                     ),
                                     LinescoreDto(
+                                        value = 6,
+                                        displayValue = "6",
+                                        period = 3
+                                    ),
+                                    LinescoreDto(
+                                        value = 8,
+                                        displayValue = "8",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    RecordDto(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "11-2"
+                                    ),
+                                    RecordDto(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "6-1"
+                                    ),
+                                    RecordDto(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "5-1"
+                                    ),
+                                    RecordDto(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "7-1"
+                                    )
+                                )
+                            )
+                        ),
+                        date = "2025-12-06T01:00:00Z",
+                        situation = null,
+                        status = StatusDto(
+                            clock = 0,
+                            displayClock = "0:00",
+                            period = 4,
+                            type = StatusTypeDto(
+                                id = 3,
+                                name = "STATUS_FINAL",
+                                state = "post",
+                                completed = true,
+                                description = "Final",
+                                detail = "Final",
+                                shortDetail = "Final"
+                            )
+                        )
+                    )
+                )
+            ),
+            EventDto(
+                id = 401777352,
+                name = "Troy Trojans at James Madison Dukes",
+                shortName = "TROY @ JMU",
+                competitions = listOf(
+                    CompetitionDto(
+                        id = 401777352,
+                        competitors = listOf(
+                            CompetitorDto(
+                                id = 256,
+                                homeAway = HomeAway.HOME,
+                                team = TeamDto(
+                                    id = 256,
+                                    location = "James Madison",
+                                    name = "Dukes",
+                                    abbreviation = "JMU",
+                                    displayName = "James Madison Dukes",
+                                    shortDisplayName = "James Madison",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png"
+                                ),
+                                score = 31,
+                                linescores = listOf(
+                                    LinescoreDto(
                                         value = 3,
                                         displayValue = "3",
+                                        period = 1
+                                    ),
+                                    LinescoreDto(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 2
+                                    ),
+                                    LinescoreDto(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 3
+                                    ),
+                                    LinescoreDto(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 4
+                                    )
+                                ),
+                                records = listOf(
+                                    RecordDto(
+                                        name = "overall",
+                                        abbreviation = "Game",
+                                        type = RecordType.OVERALL,
+                                        summary = "12-1"
+                                    ),
+                                    RecordDto(
+                                        name = "Home",
+                                        abbreviation = null,
+                                        type = RecordType.HOME,
+                                        summary = "7-0"
+                                    ),
+                                    RecordDto(
+                                        name = "Road",
+                                        abbreviation = null,
+                                        type = RecordType.AWAY,
+                                        summary = "5-1"
+                                    ),
+                                    RecordDto(
+                                        name = "vs. Conf.",
+                                        abbreviation = null,
+                                        type = RecordType.CONF,
+                                        summary = "8-0"
+                                    )
+                                )
+                            ),
+                            CompetitorDto(
+                                id = 2653,
+                                homeAway = HomeAway.AWAY,
+                                team = TeamDto(
+                                    id = 2653,
+                                    location = "Troy",
+                                    name = "Trojans",
+                                    abbreviation = "TROY",
+                                    displayName = "Troy Trojans",
+                                    shortDisplayName = "Troy",
+                                    logo = "https://a.espncdn.com/i/teamlogos/ncaa/500/2653.png"
+                                ),
+                                score = 14,
+                                linescores = listOf(
+                                    LinescoreDto(
+                                        value = 0,
+                                        displayValue = "0",
+                                        period = 1
+                                    ),
+                                    LinescoreDto(
+                                        value = 14,
+                                        displayValue = "14",
+                                        period = 2
+                                    ),
+                                    LinescoreDto(
+                                        value = 0,
+                                        displayValue = "0",
                                         period = 3
                                     ),
                                     LinescoreDto(
@@ -2543,30 +1116,31 @@ object MockData {
                                         name = "overall",
                                         abbreviation = "Game",
                                         type = RecordType.OVERALL,
-                                        summary = "5-4"
+                                        summary = "8-5"
                                     ),
                                     RecordDto(
                                         name = "Home",
                                         abbreviation = null,
                                         type = RecordType.HOME,
-                                        summary = "4-1"
+                                        summary = "4-2"
                                     ),
                                     RecordDto(
                                         name = "Road",
                                         abbreviation = null,
                                         type = RecordType.AWAY,
-                                        summary = "1-3"
+                                        summary = "4-3"
                                     ),
                                     RecordDto(
                                         name = "vs. Conf.",
                                         abbreviation = null,
                                         type = RecordType.CONF,
-                                        summary = "3-3"
+                                        summary = "6-2"
                                     )
                                 )
                             )
                         ),
-                        date = "2025-11-08T02:00:00Z",
+                        date = "2025-12-06T00:00:00Z",
+                        situation = null,
                         status = StatusDto(
                             clock = 0,
                             displayClock = "0:00",
